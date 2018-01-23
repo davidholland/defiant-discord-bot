@@ -29,10 +29,22 @@ if token and token != '':
     @client.event
     async def on_message(message):
         if message.content.startswith('!affix'):
+            await client.send_message(message.channel, '''Let's find out what junk we are dealing with this week...''')
             raw = requests.get(affixes_url, headers=headers, verify=False)
             page_data = json.loads(raw.content)
             affixes = page_data['title']
-            await client.send_message(message.channel, 'This weeks affixes are: %s' % affixes)
+            await client.send_message(message.channel, '''Got it!
+
+                **%s**  |  **%s**  |  **%s**
+
+                **%s** - %s
+                **%s** - %s
+                **%s** - %s
+                ''' % (page_data['affix_details'][0]['name'], page_data['affix_details'][1]['name'], page_data['affix_details'][2]['name'],
+                    page_data['affix_details'][0]['name'], page_data['affix_details'][0]['description'],
+                    page_data['affix_details'][1]['name'], page_data['affix_details'][1]['description'],
+                    page_data['affix_details'][2]['name'], page_data['affix_details'][2]['description']
+                    ))
 
         elif message.content.startswith('!mcsta'):
             await client.send_message(message.channel, 'Do. Not. Heal.')
