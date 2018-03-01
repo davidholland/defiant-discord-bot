@@ -60,7 +60,34 @@ if token and token != '':
 
 # --------------------- END TIMED MESSAGES ---------------------
 
-# --------------------- SUPPORTING METHODS ---------------------
+# --------------------- LOOPS ---------------------
+    async def building_state_monitor():
+        mt_percent_start, cc_percent_start, nd_percent_start, mt_state_start, cc_state_start, nd_state_start = get_building_progress()
+        await client.wait_until_ready()
+        channel = discord.Object(id=wow_channel)
+        while not client.is_closed:
+            mt_percent, cc_percent, nd_percent, mt_state, cc_state, nd_state = get_building_progress()
+
+            if mt_state == 'Complete!' and mt_state_start != 'Complete!':
+                mt_state_start = 'Complete!'
+                await client.send_message(channel, '''Hey guys, I just wanted you to know that the Mage Tower is complete on the Broken Shore! ''')
+
+            if cc_state == 'Complete!' and cc_state_start != 'Complete!':
+                cc_state_start = 'Complete!'
+                await client.send_message(channel, '''Dear friends: the Command Center is complete on the Broken Shore! ''')
+
+            if nd_state == 'Complete!' and nd_state_start != 'Complete!':
+                nd_state_start = 'Complete!'
+                await client.send_message(channel, '''Alert! Alert! The Nether Disruptor is complete on the Broken Shore! ''')
+
+            await asyncio.sleep(300) # task runs every 60 seconds
+
+    client.loop.create_task(building_state_monitor())
+
+# --------------------- END LOOPS ---------------------
+
+
+# --------------------- HELPER METHODS ---------------------
 
     def get_affixes_message():
         message_content = 'Something went wrong'
@@ -86,21 +113,37 @@ if token and token != '':
         return message_content
 
     def get_building_progress():
+
+        def get_state_translation(state_number):
+            state = 'Unknown'
+            if state_number == 1:
+                state = 'Under Construction'
+            elif state_number == 2:
+                state = 'Complete!'
+            elif state_number == 3:
+                state = 'Under Attack'
+            return state
+
         raw = requests.get(buildings_url, headers=headers, verify=False)
         match = re.search(r'{\"US\":(.*?}})', raw.content.decode('utf-8'))
         build_range = match[1]
         build_dict = ast.literal_eval(match[1])
-        mage_tower = build_dict['1']['contributed']
-        command_center = build_dict['2']['contributed']
-        nether_disruptor = build_dict['3']['contributed']
 
-        return mage_tower, command_center, nether_disruptor
+        #Mage Tower Info
+        mt_state = get_state_translation(build_dict['1']['state'])
+        mt_percent = build_dict['1']['contributed']
+        #Command Center Info
+        cc_state = get_state_translation(build_dict['2']['state'])
+        cc_percent = build_dict['2']['contributed']
+        #Nether Disruptor Info
+        nd_state = get_state_translation(build_dict['3']['state'])
+        nd_percent = build_dict['3']['contributed']
 
 
+        return mt_percent, cc_percent, nd_percent, mt_state, cc_state, nd_state
 
 
-
-# --------------------- END SUPPORTING METHODS ---------------------
+# --------------------- END HELPER METHODS ---------------------
 
 # --------------------- CLIENT LISTENING METHODS ---------------------
 
@@ -115,14 +158,14 @@ if token and token != '':
             await client.send_message(message.channel, 'Do. Not. Heal.')
 
         elif message.content.startswith('!build'):
-            mage_tower, command_center, nether_disruptor = get_building_progress()
+            mt_percent, cc_percent, nd_percent, mt_state, cc_state, nd_state = get_building_progress()
             await client.send_message(message.channel, ''' Current Building Progress:
 
-               **Mage Tower** - %s%%
-               **Command Center** - %s%%
-               **Nether Disruptor** - %s%%
+               Mage Tower is %s - %s%%
+               Command Center is %s - %s%%
+               Nether Disruptor %s - %s%%
 
-                ''' % (mage_tower, command_center, nether_disruptor)
+                ''' % (mt_state, mt_percent, cc_state, cc_percent, nd_state, nd_percent)
                 )
 
 # --------------------- END CLIENT LISTENING METHODS ---------------------
