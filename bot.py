@@ -4,7 +4,9 @@ import datetime
 import asyncio
 import requests
 import json
+import ast
 import os
+import re
 
 token = ''
 
@@ -28,6 +30,7 @@ if os.path.isfile('settings.config'):
 
 headers={'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0'}
 affixes_url = "https://raider.io/api/v1/mythic-plus/affixes?region=us"
+buildings_url = "https://wow.gameinfo.io/broken-isles-buildings"
 
 
 if token and token != '':
@@ -51,6 +54,9 @@ if token and token != '':
                 message_content = get_affixes_message()
                 await client.send_message(channel, message_content)
             await asyncio.sleep(60) # task runs every 60 seconds
+
+    client.loop.create_task(tuesday_morning_announces())
+
 
 # --------------------- END TIMED MESSAGES ---------------------
 
@@ -79,7 +85,19 @@ if token and token != '':
 
         return message_content
 
-    client.loop.create_task(tuesday_morning_announces())
+    def get_building_progress():
+        raw = requests.get(buildings_url, headers=headers, verify=False)
+        match = re.search(r'{\"US\":(.*?}})', raw.content.decode('utf-8'))
+        build_range = match[1]
+        build_dict = ast.literal_eval(match[1])
+        mage_tower = build_dict['1']['contributed']
+        command_center = build_dict['2']['contributed']
+        nether_disruptor = build_dict['3']['contributed']
+
+        return mage_tower, command_center, nether_disruptor
+
+
+
 
 
 # --------------------- END SUPPORTING METHODS ---------------------
@@ -95,6 +113,17 @@ if token and token != '':
 
         elif message.content.startswith('!mcsta'):
             await client.send_message(message.channel, 'Do. Not. Heal.')
+
+        elif message.content.startswith('!build'):
+            mage_tower, command_center, nether_disruptor = get_building_progress()
+            await client.send_message(message.channel, ''' Current Building Progress:
+
+               **Mage Tower** - %s%%
+               **Command Center** - %s%%
+               **Nether Disruptor** - %s%%
+
+                ''' % (mage_tower, command_center, nether_disruptor)
+                )
 
 # --------------------- END CLIENT LISTENING METHODS ---------------------
 
