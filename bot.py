@@ -8,6 +8,9 @@ import ast
 import os
 import re
 
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
 token = ''
 
 if os.path.isfile('settings.config'):
@@ -43,7 +46,7 @@ if token and token != '':
         print('------')
 
 # --------------------- TIMED MESSAGES ---------------------
-
+    #Tuesday morning announcements
     async def tuesday_morning_announces():
         await client.wait_until_ready()
         channel = discord.Object(id=wow_channel)
@@ -61,6 +64,7 @@ if token and token != '':
 # --------------------- END TIMED MESSAGES ---------------------
 
 # --------------------- LOOPS ---------------------
+    # Monitor the broken shore buildings and announce completion
     async def building_state_monitor():
         mt_percent_start, cc_percent_start, nd_percent_start, mt_state_start, cc_state_start, nd_state_start = get_building_progress()
         await client.wait_until_ready()
@@ -69,18 +73,18 @@ if token and token != '':
             mt_percent, cc_percent, nd_percent, mt_state, cc_state, nd_state = get_building_progress()
 
             if mt_state == 'Complete!' and mt_state_start != 'Complete!':
-                mt_state_start = 'Complete!'
                 await client.send_message(channel, '''Hey guys, I just wanted you to know that the Mage Tower is complete on the Broken Shore! ''')
+            mt_state_start = mt_state
 
             if cc_state == 'Complete!' and cc_state_start != 'Complete!':
-                cc_state_start = 'Complete!'
                 await client.send_message(channel, '''Dear friends: the Command Center is complete on the Broken Shore! ''')
+            cc_state_start = cc_state
 
             if nd_state == 'Complete!' and nd_state_start != 'Complete!':
-                nd_state_start = 'Complete!'
                 await client.send_message(channel, '''Alert! Alert! The Nether Disruptor is complete on the Broken Shore! ''')
+            nd_state_start = nd_state
 
-            await asyncio.sleep(300) # task runs every 60 seconds
+            await asyncio.sleep(300) # task runs every 5 minutes
 
     client.loop.create_task(building_state_monitor())
 
@@ -149,14 +153,23 @@ if token and token != '':
 
     @client.event
     async def on_message(message):
-        if message.content.startswith('!affix'):
+
+
+        if message.content.startswith('!help'):
+            await client.send_message(message.channel, '''I'm a work in progress - if there's anything you like to see me be able to do talk to Eodred.
+                Defiant website: http://thedefiantguild.com/
+
+                I currently respond to the following commands:  !affix, !build, !help
+                There might be a few hidden ones.  We'll see.
+                '''
+                )
+        # Channel command to handle affixes
+        elif message.content.startswith('!affix'):
             await client.send_message(message.channel, '''Let's find out what junk we are dealing with this week...''')
             message_content = get_affixes_message()
             await client.send_message(message.channel, message_content)
 
-        elif message.content.startswith('!mcsta'):
-            await client.send_message(message.channel, 'Do. Not. Heal.')
-
+        # Channel command to handle build status
         elif message.content.startswith('!build'):
             mt_percent, cc_percent, nd_percent, mt_state, cc_state, nd_state = get_building_progress()
             await client.send_message(message.channel, ''' Current Building Progress:
@@ -167,6 +180,9 @@ if token and token != '':
 
                 ''' % (mt_state, mt_percent, cc_state, cc_percent, nd_state, nd_percent)
                 )
+        # lul, don't heal mcstabbins.
+        elif message.content.startswith('!mcsta'):
+            await client.send_message(message.channel, 'Do. Not. Heal.')
 
 # --------------------- END CLIENT LISTENING METHODS ---------------------
 
