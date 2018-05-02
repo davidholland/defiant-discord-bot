@@ -3,3 +3,4 @@ token=your.token.goes.here
 wow_channel=CHANNEL_ID
 broadcast_channel=CHANNEL_ID
 test_channel=CHANNEL_ID
+base_directory=DIRECTORY_BOT_IS_IN
