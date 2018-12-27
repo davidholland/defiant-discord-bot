@@ -56,7 +56,7 @@ if token and token != '':
         channel = discord.Object(id=wow_channel)
         while not client.is_closed:
             now = datetime.datetime.now()
-            if now.weekday() == 1 and now.hour == 7 and now.minute == 45:
+            if now.weekday() == 1 and now.hour == 9 and now.minute == 15:
                 await client.send_message(channel, '''Happy Tuesday Defiant! This weeks affixes are...  ''')
                 message_content = get_affixes_message()
                 await client.send_message(channel, message_content)
@@ -104,19 +104,20 @@ if token and token != '':
             page_data = json.loads(raw.content)
             affixes = page_data['title']
             message_content = '''
-                    **%s**  |  **%s**  |  **%s**
+                    **%s**  |  **%s**  |  **%s**  |  **%s**
 
                     **%s** - %s
                     **%s** - %s
                     **%s** - %s
-                    ''' % (page_data['affix_details'][0]['name'], page_data['affix_details'][1]['name'], page_data['affix_details'][2]['name'],
+                    **%s** - %s
+                    ''' % (page_data['affix_details'][0]['name'], page_data['affix_details'][1]['name'], page_data['affix_details'][2]['name'], page_data['affix_details'][3]['name'],
                         page_data['affix_details'][0]['name'], page_data['affix_details'][0]['description'],
                         page_data['affix_details'][1]['name'], page_data['affix_details'][1]['description'],
-                        page_data['affix_details'][2]['name'], page_data['affix_details'][2]['description']
+                        page_data['affix_details'][2]['name'], page_data['affix_details'][2]['description'],
+                        page_data['affix_details'][3]['name'], page_data['affix_details'][3]['description']
                         )
         except Exception as e:
             print("Something went wrong: %s" % e)
-
         return message_content
 
     def get_building_progress():
