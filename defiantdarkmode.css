@@ -23,8 +23,8 @@ limitations under the License.
 
    /* These should be less important: */
    --background-hover: rgba(255, 255, 255, 0.1);
-   --background-light: #AAA;
-   --background-bright: #FFF;
+   --background-light: #000;
+   --background-bright: #000;
 
    --border-dim: #666;
    --border-bright: var(--primary);
