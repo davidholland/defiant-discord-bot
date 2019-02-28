@@ -163,7 +163,7 @@ if token and token != '':
             await client.send_message(message.channel, '''I'm a work in progress - if there's anything you like to see me be able to do talk to Eodred.
                 Defiant website: http://thedefiantguild.com/
 
-                I currently respond to the following commands:  !affix, !build, !help
+                I currently respond to the following commands:  !affix, !build, !help, !logs, !chest, !titan, !timers
                 There might be a few hidden ones.  We'll see.
                 '''
                 )
@@ -187,12 +187,12 @@ if token and token != '':
 
 
         elif message.content.lower().startswith('!whatday'):
-            d = { 1 : '''Unless you're Lonsham it doesn't really matter.  Otherwise, RAID NIGHT!''', 2 : '''GUESS WHAT DAY IT IIIIIISSSS!?!?''', 3 : '''https://memegenerator.net/img/instances/46528902/hey-guys-guess-what-day-it-is-humpday-heroes-raid-night-woop-woop.jpg''', 4 : '''https://i.imgur.com/x0qSq5H.png''', 5 : '''https://botw-pd.s3.amazonaws.com/styles/logo-original-577x577/s3/022012/raid.png?itok=46BQTsD6''', 6 : '''http://s.quickmeme.com/img/18/18c2f6010e5e9cd3c2b868785cfe6628788beff0f46f89c83b2c55cbae7c1502.jpg''' }
+            d = { 1 : '''https://strats-forum-attachments.s3.amazonaws.com/original/2X/5/5c98f26aa5468db7870865429ea404ea32131f67.jpg''', 2 : '''https://i.imgur.com/x0qSq5H.png''', 3 : '''https://memegenerator.net/img/instances/56758076/did-someone-say-raid-night.jpg''', 4 : '''http://s.quickmeme.com/img/18/18c2f6010e5e9cd3c2b868785cfe6628788beff0f46f89c83b2c55cbae7c1502.jpg''' }
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
         elif message.content.lower().startswith('!mcsta'):
-            d = { 1 : '..you can fall of this ledge guys.', 2 : 'Do. Not. Heal.', 3 : 'You can just cloak that.', 4 : '''I wouldnt get hit if the tanks would get there faster.''', 5 : 'AOE stealth!  We can sneak up on the boss!  It never goes poorly!', 6: "Ehhh... hold on... let me put that on my bars." }
+            d = { 1 : '..you can fall of this ledge guys.', 2 : 'Do. Not. Heal.', 3 : 'TEAM RAMROD!', 4: '''https://i.pinimg.com/originals/82/da/70/82da703541a8b54d123650e4829a5edb.jpg''' }
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
@@ -202,7 +202,7 @@ if token and token != '':
             await client.send_message(message.channel, v)
 
         elif message.content.lower().startswith('!rez'):
-            d = { 1 : 'https://memegenerator.net/img/instances/81499260/heeeeeyyyyooooooo.jpg', 2 : 'Them bearwinders though.', 3 : 'https://memegenerator.net/img/instances/81499241/beeeooo-beeeooo-beeeooo-beeeooo-beeeooo-beeeooooooo.jpg', 4 : 'Dunk city!', 5 : 'Everyone should roll paladins.', 6 : 'Shept is standing behind me with that scary helmet again.' }
+            d = { 1 : 'https://memegenerator.net/img/instances/81499260/heeeeeyyyyooooooo.jpg', 2 : 'Them bearwinders though.', 3 : 'https://memegenerator.net/img/instances/81499241/beeeooo-beeeooo-beeeooo-beeeooo-beeeooo-beeeooooooo.jpg', 4 : "Don't worry, it'll just be a quick plus-a-roo" }
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
@@ -212,13 +212,7 @@ if token and token != '':
             await client.send_message(message.channel, v)
 
         elif message.content.lower().startswith('!lon'):
-            d = { 1 : 'WHAT DAY IS IT!?!?', 2 : 'Lootsham? Looticus?', 3 : 'All your loot are belong to him.', 4 : 'LOL, another leggo guys.' }
-            k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
-
-        elif message.content.lower().startswith('!wrin'):
-            d = { 1 : 'Nachos!', 2 : 'I mean what else is there to say? Nachos!', 3 : 'Chips. Cheese. Whatever else you want. Nachos.' }
-            k, v = random.choice(list(d.items()))
+            d = { 1 : 'WHAT DAY IS IT!?!?', 2 : 'Lootsham? Looticus?', 3 : 'All your loot are belong to him.'}
             await client.send_message(message.channel, v)
 
         elif message.content.lower().startswith('!scarab'):
@@ -237,7 +231,7 @@ if token and token != '':
             await client.send_message(message.channel, v)
 
         elif message.content.lower().startswith('!tareva'):
-            d = { 1 : '...  <-- a joke about being really quiet.' , 2: 'The actual guild leader.  Pulling strings behind the scenes.', 3: 'Finally got Prydaz!'}
+            d = { 1 : '...  <-- a joke about being really quiet.' , 2: 'The actual guild leader.  Pulling strings behind the scenes.'}
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
@@ -246,18 +240,8 @@ if token and token != '':
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
-        elif message.content.lower().startswith('!rath'):
-            d = { 1 : '''https://i.imgflip.com/26dkaw.jpg''', 2 : '''https://memegenerator.net/img/images/400x/8723521.jpg''', 3 : '''By don't click the pylons you mean... click... the pylons?''' }
-            k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
-
         elif message.content.lower().startswith('!darj'):
             d = { 1 : '''He's got moon''', 2 : '''10 minute break?  Sweet.  Be back in 20.''' }
-            k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
-
-        elif message.content.lower().startswith('!chuter'):
-            d = { 1 : '''Cheddar.''', 2 : '''Sorry.  Still no heals.''', 3: '''http://img-aws.ehowcdn.com/560x560p/photos.demandstudios.com/getty/article/63/78/490249.jpg''' }
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
@@ -268,8 +252,8 @@ if token and token != '':
 
         elif message.content.lower().startswith('!tonkah') or message.content.lower().startswith('!taunk') or message.content.lower().startswith('!holy'):
             d = { 1 : '''https://memegenerator.net/img/instances/81499360/someone-say-my-name.jpg''', 2 : '''Dad jokes, inc.''' }
-            if message.content.lower().startswith('!holy'):
-                d = { 1 : '''The best healer ever, in warcraft, the world, and whatever else he needs to hear to switch from shadow to holy.''', 2 : '''The water is knee deep.  So he's swimming''' }
+            if message.content.lower().startswith('!earth'):
+                d = { 1 : '''The best healer ever, in warcraft, the world, and whatever else he needs to hear to heal.''', 2 : '''He is not listening.''' }
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
@@ -279,11 +263,36 @@ if token and token != '':
                 d = { 1: '''https://i.pinimg.com/originals/fc/14/a3/fc14a3c0632ed3b8ce06c8cae0d43ace.gif'''}
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
+
         elif message.content.lower().startswith('!sour'):
             d = { 1 : '''Hold on, hold on, hold on... wait... Reznik, what is the button called that I push to taunt?''', 2 : '''Cracklin' with lightning?  Friend huggin' time.''' }
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
+        elif message.content.lower().startswith('!chest'):
+            d = { 1 : '''https://www.wowhead.com/mythic-keystones-and-dungeons-guide#other-gear-item-levels''' }
+            k, v = random.choice(list(d.items()))
+            await client.send_message(message.channel, v)
+
+        elif message.content.lower().startswith('!timer'):
+            d = { 1 : '''https://www.wowhead.com/mythic-keystones-and-dungeons-guide#dungeon-timers'''}
+            k, v = random.choice(list(d.items()))
+            await client.send_message(message.channel, v)
+
+        elif message.content.lower().startswith('!titan'):
+            d = { 1 : '''https://www.wowhead.com/mythic-keystones-and-dungeons-guide#titan-resdiuum''' }
+            k, v = random.choice(list(d.items()))
+            await client.send_message(message.channel, v)
+
+        elif message.content.lower().startswith('!logs'):
+            d = { 1 : '''https://www.warcraftlogs.com/guild/us/doomhammer/defiant''' }
+            k, v = random.choice(list(d.items()))
+            await client.send_message(message.channel, v)
+
+        elif message.content.lower().startswith('!mythiclogs'):
+            d = { 1 : '''https://www.warcraftlogs.com/user/reports-list/401351/''' }
+            k, v = random.choice(list(d.items()))
+            await client.send_message(message.channel, v)
 
 
 
