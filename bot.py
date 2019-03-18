@@ -67,34 +67,6 @@ if token and token != '':
 
 # --------------------- END TIMED MESSAGES ---------------------
 
-# --------------------- LOOPS ---------------------
-    # Monitor the broken shore buildings and announce completion
-    async def building_state_monitor():
-        mt_percent_start, cc_percent_start, nd_percent_start, mt_state_start, cc_state_start, nd_state_start = get_building_progress()
-        await client.wait_until_ready()
-        channel = discord.Object(id=wow_channel)
-        while not client.is_closed:
-            mt_percent, cc_percent, nd_percent, mt_state, cc_state, nd_state = get_building_progress()
-
-            if mt_state == 'Complete!' and mt_state_start != 'Complete!':
-                await client.send_message(channel, '''Hey guys, I just wanted you to know that the Mage Tower is complete on the Broken Shore! ''')
-            mt_state_start = mt_state
-
-            if cc_state == 'Complete!' and cc_state_start != 'Complete!':
-                await client.send_message(channel, '''Dear friends: the Command Center is complete on the Broken Shore! ''')
-            cc_state_start = cc_state
-
-            if nd_state == 'Complete!' and nd_state_start != 'Complete!':
-                await client.send_message(channel, '''Alert! Alert! The Nether Disruptor is complete on the Broken Shore! ''')
-            nd_state_start = nd_state
-
-            await asyncio.sleep(300) # task runs every 5 minutes
-
-    client.loop.create_task(building_state_monitor())
-
-# --------------------- END LOOPS ---------------------
-
-
 # --------------------- HELPER METHODS ---------------------
 
     def get_affixes_message():
@@ -274,19 +246,14 @@ if token and token != '':
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
-        elif message.content.lower().startswith('!chest'):
-            d = { 1 : '''https://s3-us-west-2.amazonaws.com/discord.thedefiantguild.com/mplus_details.png''' }
-            k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+        elif message.content.lower().startswith('!chest') or message.content.lower().startswith('!titan') or message.content.lower().startswith('!resid'):
+            with open('mplus_details.png', 'rb') as mplus_details:
+                await client.send_file(message.channel, mplus_details)
 
         elif message.content.lower().startswith('!timer'):
             d = { 1 : '''https://www.wowhead.com/mythic-keystones-and-dungeons-guide#dungeon-timers'''}
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
-
-        elif message.content.lower().startswith('!titan'):
-            with open('mplus_details.png', 'rb') as mplus_details:
-                await client.send_file(message.channel, mplus_details)
 
         elif message.content.lower().startswith('!logs'):
             d = { 1 : '''https://www.warcraftlogs.com/guild/us/doomhammer/defiant''' }
