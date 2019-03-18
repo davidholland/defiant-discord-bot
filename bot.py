@@ -275,7 +275,7 @@ if token and token != '':
             await client.send_message(message.channel, v)
 
         elif message.content.lower().startswith('!chest'):
-            d = { 1 : '''https://www.wowhead.com/mythic-keystones-and-dungeons-guide#other-gear-item-levels''' }
+            d = { 1 : '''https://s3-us-west-2.amazonaws.com/discord.thedefiantguild.com/mplus_details.png''' }
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
@@ -285,9 +285,8 @@ if token and token != '':
             await client.send_message(message.channel, v)
 
         elif message.content.lower().startswith('!titan'):
-            d = { 1 : '''https://www.wowhead.com/mythic-keystones-and-dungeons-guide#titan-resdiuum''' }
-            k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            with open('mplus_details.png', 'rb') as mplus_details:
+                await client.send_file(message.channel, mplus_details)
 
         elif message.content.lower().startswith('!logs'):
             d = { 1 : '''https://www.warcraftlogs.com/guild/us/doomhammer/defiant''' }
