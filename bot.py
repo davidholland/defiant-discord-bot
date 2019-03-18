@@ -191,13 +191,18 @@ if token and token != '':
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
+        elif message.content.lower().startswith('!ball'):
+            d = { 1 : '''It wasn't me.''', 2 : '''Don't worry, this portal is safe. :D ''', 3 : 'https://media1.tenor.com/images/9cd51c012a19b1ed7501f7fee83e9617/tenor.gif', 4: '''https://media.tenor.com/images/077234833a766b534f348213f742eaf0/tenor.gif''' }
+            k, v = random.choice(list(d.items()))
+            await client.send_message(message.channel, v)
+
         elif message.content.lower().startswith('!mcsta'):
             d = { 1 : '..you can fall of this ledge guys.', 2 : 'Do. Not. Heal.', 3 : 'TEAM RAMROD!', 4: '''https://i.pinimg.com/originals/82/da/70/82da703541a8b54d123650e4829a5edb.jpg''' }
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
         elif message.content.lower().startswith('!walm'):
-            d = { 1 : '1 Plz.', 2 : '''Dont get roasted!''', 3 : 'Another 1 plz, lol I canceled that one.', 4 : 'Booty!', 5 : 'Too busy logging out.' }
+            d = { 1 : '1 Plz.', 2 : '''https://i.imgflip.com/2uvz1e.jpg''', 3 : 'Another 1 plz, lol I canceled that one.', 4 : '''https://i.imgflip.com/2uvzyi.jpg'''}
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
