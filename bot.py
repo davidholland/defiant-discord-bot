@@ -135,28 +135,10 @@ if token and token != '':
             await client.send_message(message.channel, '''I'm a work in progress - if there's anything you like to see me be able to do talk to Eodred.
                 Defiant website: http://thedefiantguild.com/
 
-                I currently respond to the following commands:  !affix, !build, !help, !logs, !chest, !titan, !timers
+                I currently respond to the following commands:  !affixes, !help, !logs, !chest, !titan, !timers
                 There might be a few hidden ones.  We'll see.
                 '''
                 )
-        # Channel command to handle affixes
-        elif message.content.lower().startswith('!affix'):
-            await client.send_message(message.channel, '''Let's find out what junk we are dealing with this week...''')
-            message_content = get_affixes_message()
-            await client.send_message(message.channel, message_content)
-
-        # Channel command to handle build status
-        elif message.content.lower().startswith('!build'):
-            mt_percent, cc_percent, nd_percent, mt_state, cc_state, nd_state = get_building_progress()
-            await client.send_message(message.channel, ''' Current Building Progress:
-
-               Mage Tower is %s - %s%%
-               Command Center is %s - %s%%
-               Nether Disruptor %s - %s%%
-
-                ''' % (mt_state, mt_percent, cc_state, cc_percent, nd_state, nd_percent)
-                )
-
 
         elif message.content.lower().startswith('!whatday'):
             d = { 1 : '''https://strats-forum-attachments.s3.amazonaws.com/original/2X/5/5c98f26aa5468db7870865429ea404ea32131f67.jpg''', 2 : '''https://i.imgur.com/x0qSq5H.png''', 3 : '''https://memegenerator.net/img/instances/56758076/did-someone-say-raid-night.jpg''', 4 : '''http://s.quickmeme.com/img/18/18c2f6010e5e9cd3c2b868785cfe6628788beff0f46f89c83b2c55cbae7c1502.jpg''' }
@@ -246,14 +228,17 @@ if token and token != '':
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
-        elif message.content.lower().startswith('!chest') or message.content.lower().startswith('!titan') or message.content.lower().startswith('!resid'):
+        elif message.content.lower().startswith('!chest') or message.content.lower().startswith('!titan') or message.content.lower().startswith('!resid') or message.content.lower().startswith('!mythic'):
             with open('mplus_details.png', 'rb') as mplus_details:
                 await client.send_file(message.channel, mplus_details)
 
         elif message.content.lower().startswith('!timer'):
-            d = { 1 : '''https://www.wowhead.com/mythic-keystones-and-dungeons-guide#dungeon-timers'''}
-            k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            with open('timers.png', 'rb') as mplus_timers:
+                await client.send_file(message.channel, mplus_timers)
+
+        elif message.content.lower().startswith('!affix'):
+            with open('affixes.png', 'rb') as mplus_affixes:
+                await client.send_file(message.channel, mplus_affixes)
 
         elif message.content.lower().startswith('!logs'):
             d = { 1 : '''https://www.warcraftlogs.com/guild/us/doomhammer/defiant''' }
