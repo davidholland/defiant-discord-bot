@@ -223,10 +223,18 @@ if token and token != '':
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
+        elif message.content.lower().startswith('!mag'):
+            with open('magnollia.png', 'rb') as mag_image:
+                await client.send_file(message.channel, mag_image)
+
         elif message.content.lower().startswith('!sour'):
             d = { 1 : '''Hold on, hold on, hold on... wait... Reznik, what is the button called that I push to taunt?''', 2 : '''Cracklin' with lightning?  Friend huggin' time.''' }
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
+
+        elif message.content.lower().startswith('!rath'):
+            with open('rathattack.png', 'rb') as rath_image:
+                await client.send_file(message.channel, rath_image)
 
         elif message.content.lower().startswith('!chest') or message.content.lower().startswith('!titan') or message.content.lower().startswith('!resid') or message.content.lower().startswith('!mythic'):
             with open('mplus_details.png', 'rb') as mplus_details:
