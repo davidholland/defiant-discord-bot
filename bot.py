@@ -92,6 +92,55 @@ if token and token != '':
             print("Something went wrong: %s" % e)
         return message_content
 
+    def get_table(tableName):
+        table = ''
+        try:
+            if tableName in ('chest', 'titan', 'mythic'):
+                table = '''
+                ```
+Key Level | Gear iLvL | Chest iLvL | Residuum
+---------------------------------------------
+    2     |    435    |    440     |
+    3     |    435    |    445     |
+    4     |    440    |    450     |
+    5     |    445    |    450     |
+    6     |    445    |    455     |
+    7     |    450    |    460     |
+    8     |    455    |    460     |
+    9     |    455    |    460     |
+    10    |    455    |    465     |   1,700
+    11    |    460    |    465     |   1,790
+    12    |    460    |    470     |   1.880
+    13    |    460    |    470     |   1,970
+    14    |    465    |    470     |   2,060
+    15    |    465    |    475     |   2,150
+
+                ```
+                '''
+            elif tableName in ('echo'):
+                table = '''
+                ```
+Activity           | Amount of Echoes of Ny'alotha
+--------------------------------------------------
+Horrific Visions   |    150 (Full Clear)
+Major Assaults     |    125
+Minor Assaults     |    75
+Emissaries         |    50
+Raid Boss (1/wk)   |    15-25
+LFR Wing           |    25
+Random BG Win      |    15-25
+Rated Arena Win    |    10-25 (Increases with PvP Rank)
+RBG Win            |    35+ (Increases with PvP Rank)
+Mythic + Dungeon   |    3 Per Keystone level
+PVP Weekly Cache   |    175-300 (Increases with PvP Rank)
+M+ Weekly Cache    |    20 Per Keystone Level
+                ```
+                '''
+        except Exception as e:
+            logger.error('Error REPLACE Message: %s' % (e))
+            return table
+        return table
+
     def get_building_progress():
 
         def get_state_translation(state_number):
@@ -172,6 +221,7 @@ if token and token != '':
 
         elif message.content.lower().startswith('!lon'):
             d = { 1 : 'WHAT DAY IS IT!?!?', 2 : 'Lootsham? Looticus?', 3 : 'All your loot are belong to him.'}
+            k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
         elif message.content.lower().startswith('!scarab'):
@@ -217,11 +267,8 @@ if token and token != '':
             await client.send_message(message.channel, v)
 
         elif message.content.lower().startswith('!eodred') or message.content.lower().startswith('!xorr'):
-            d = { 1 : '''https://memegenerator.net/img/instances/81499486/did-we-hit-every-bomb-on-that-bridge.jpg''', 2 : '''https://memegenerator.net/img/instances/81499514/mmmhhmmm.jpg''', 3: '''*sigh*''' }
-            if message.content.lower().startswith('!xorr'):
-                d = { 1: '''https://i.pinimg.com/originals/fc/14/a3/fc14a3c0632ed3b8ce06c8cae0d43ace.gif'''}
-            k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            with open('eodred.png', 'rb') as eodred_image:
+                await client.send_file(message.channel, eodred_image)
 
         elif message.content.lower().startswith('!mag'):
             with open('magnollia.png', 'rb') as mag_image:
@@ -237,8 +284,12 @@ if token and token != '':
                 await client.send_file(message.channel, rath_image)
 
         elif message.content.lower().startswith('!chest') or message.content.lower().startswith('!titan') or message.content.lower().startswith('!resid') or message.content.lower().startswith('!mythic'):
-            with open('mplus_details.png', 'rb') as mplus_details:
-                await client.send_file(message.channel, mplus_details)
+            table = get_table("chest")
+            await client.send_message(message.channel, table)
+
+        elif message.content.lower().startswith('!echo') or message.content.lower().startswith('!echoes'):
+            table = get_table("echo")
+            await client.send_message(message.channel, table)
 
         elif message.content.lower().startswith('!timer'):
             with open('timers.png', 'rb') as mplus_timers:
@@ -258,7 +309,17 @@ if token and token != '':
             k, v = random.choice(list(d.items()))
             await client.send_message(message.channel, v)
 
+        elif message.content.lower().startswith('!tuesday'):
+            await client.send_message(message.channel, '''Happy Tuesday Defiant! This weeks affixes are...  ''')
+            message_content = get_affixes_message()
+            await client.send_message(message.channel, message_content)
 
+        elif message.content.lower().startswith('!cmc'):
+            mvals = message.content.split('|')
+            print("mvals are %s" % mvals)
+            mval_channel=discord.Object(id=int(mvals[1]))
+            mval_message=mvals[2]
+            await client.send_message(mval_channel, mval_message)
 
 
 # --------------------- END CLIENT LISTENING METHODS ---------------------
