@@ -347,7 +347,7 @@ Key Level | Gear iLvL | Chest iLvL
         elif message.content.lower().startswith('!restart'):
             author = message.author
             if str(author) in administrators:
-                v="Restarting Discord Bot"
+                v="Restarting Discord Bot!"
                 await send_message(channel=message.channel, message=v, send_file=None)
                 close_discord()
 
