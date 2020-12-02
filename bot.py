@@ -57,9 +57,9 @@ if token and token != '':
         while not client.is_closed:
             now = datetime.datetime.now()
             if now.weekday() == 1 and now.hour == 9 and now.minute == 15:
-                await client.send_message(channel, '''Happy Tuesday Defiant! This weeks affixes are...  ''')
+                await channel.send(channel, '''Happy Tuesday Defiant! This weeks affixes are...  ''')
                 message_content = get_affixes_message()
-                await client.send_message(channel, message_content)
+                await channel.send(channel, message_content)
             await asyncio.sleep(60) # task runs every 60 seconds
 
     client.loop.create_task(tuesday_morning_announces())
@@ -68,6 +68,15 @@ if token and token != '':
 # --------------------- END TIMED MESSAGES ---------------------
 
 # --------------------- HELPER METHODS ---------------------
+    async def send_message(channel, message=None, send_file=None):
+        try:
+            if message and not send_file:
+                await channel.send(message)
+            elif send_file and not message:
+                await channel.send(file=discord.File(send_file))
+        except Exception as e:
+            print("Sending message went wrong: %s" % e)
+
 
     def get_affixes_message():
         message_content = 'Something went wrong'
@@ -91,6 +100,81 @@ if token and token != '':
         except Exception as e:
             print("Something went wrong: %s" % e)
         return message_content
+
+    def get_table(tableName):
+        table = ''
+        try:
+            if tableName in ('chest', 'titan', 'mythic'):
+                table = '''
+```
+Key Level | Gear iLvL | Chest iLvL
+-----------------------------------
+    2     |    187    |    200
+    3     |    190    |    203
+    4     |    194    |    207
+    5     |    194    |    210
+    6     |    197    |    210
+    7     |    200    |    213
+    8     |    200    |    216
+    9     |    200    |    216
+    10    |    204    |    220
+    11    |    204    |    220
+    12    |    207    |    223
+    13    |    207    |    223
+    14    |    207    |    226
+    15    |    210    |    226 ```
+                '''
+            elif tableName in ('echo'):
+                table = '''
+                ```
+Activity           | Amount of Echoes of Ny'alotha
+--------------------------------------------------
+Horrific Visions   |    150 (Full Clear)
+Major Assaults     |    125
+Minor Assaults     |    75
+Emissaries         |    50
+Raid Boss (1/wk)   |    15-25
+LFR Wing           |    25
+Random BG Win      |    15-25
+Rated Arena Win    |    10-25 (Increases with PvP Rank)
+RBG Win            |    35+ (Increases with PvP Rank)
+Mythic + Dungeon   |    3 Per Keystone level
+PVP Weekly Cache   |    175-300 (Increases with PvP Rank)
+M+ Weekly Cache    |    20 Per Keystone Level
+                ```
+                '''
+
+            elif tableName in ('ash'):
+                table = '''
+                ```
+  Layer   | Soul Ash
+-----------------------
+    1     |    120
+    2     |    100
+    3     |    85
+    4     |    70
+    5     |    60
+    6     |    50
+    7     |    45
+    8     |    40    ```
+    '''
+
+            elif tableName in ('!leggo'):
+                table = '''
+                ```
+  Rank    |  Ilvl  |  Soul Ash
+--------------------------------
+    1     |  190   |  1250
+    2     |  210   |  2000
+    3     |  225   |  3200
+    4     |  235   |  5150
+```
+'''
+
+        except Exception as e:
+            logger.error('Error REPLACE Message: %s' % (e))
+            return table
+        return table
 
     def get_building_progress():
 
@@ -132,7 +216,7 @@ if token and token != '':
 
 
         if message.content.lower().startswith('!help'):
-            await client.send_message(message.channel, '''I'm a work in progress - if there's anything you like to see me be able to do talk to Eodred.
+            await message.channel.send('''I'm a work in progress - if there's anything you like to see me be able to do talk to Eodred.
                 Defiant website: http://thedefiantguild.com/
 
                 I currently respond to the following commands:  !affixes, !help, !logs, !chest, !titan, !timers
@@ -143,122 +227,134 @@ if token and token != '':
         elif message.content.lower().startswith('!whatday'):
             d = { 1 : '''https://strats-forum-attachments.s3.amazonaws.com/original/2X/5/5c98f26aa5468db7870865429ea404ea32131f67.jpg''', 2 : '''https://i.imgur.com/x0qSq5H.png''', 3 : '''https://memegenerator.net/img/instances/56758076/did-someone-say-raid-night.jpg''', 4 : '''http://s.quickmeme.com/img/18/18c2f6010e5e9cd3c2b868785cfe6628788beff0f46f89c83b2c55cbae7c1502.jpg''' }
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!ball'):
             d = { 1 : '''It wasn't me.''', 2 : '''Don't worry, this portal is safe. :D ''', 3 : 'https://media1.tenor.com/images/9cd51c012a19b1ed7501f7fee83e9617/tenor.gif', 4: '''https://media.tenor.com/images/077234833a766b534f348213f742eaf0/tenor.gif''' }
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!mcsta'):
             d = { 1 : '..you can fall of this ledge guys.', 2 : 'Do. Not. Heal.', 3 : 'TEAM RAMROD!', 4: '''https://i.pinimg.com/originals/82/da/70/82da703541a8b54d123650e4829a5edb.jpg''' }
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!walm'):
             d = { 1 : '1 Plz.', 2 : '''https://i.imgflip.com/2uvz1e.jpg''', 3 : 'Another 1 plz, lol I canceled that one.', 4 : '''https://i.imgflip.com/2uvzyi.jpg'''}
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!rez'):
             d = { 1 : 'https://memegenerator.net/img/instances/81499260/heeeeeyyyyooooooo.jpg', 2 : 'Them bearwinders though.', 3 : 'https://memegenerator.net/img/instances/81499241/beeeooo-beeeooo-beeeooo-beeeooo-beeeooo-beeeooooooo.jpg', 4 : "Don't worry, it'll just be a quick plus-a-roo" }
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!shept'):
             d = { 1 : 'Very punny guy!', 2 : 'The robot version is the best version.', 3 : 'Prot DPS spec!', 4 : 'Agreed. Everyone should roll paladins.' }
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!lon'):
             d = { 1 : 'WHAT DAY IS IT!?!?', 2 : 'Lootsham? Looticus?', 3 : 'All your loot are belong to him.'}
-            await client.send_message(message.channel, v)
+            k, v = random.choice(list(d.items()))
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!scarab'):
             d = { 1 : 'Sleepy Boy!', 2 : 'That dead shaman over there?', 3 : '''Top DPS? Dead? Asleep? Anyone's guess really.''' }
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!nia'):
             d = { 1 : 'Watch. Your. Throat.' , 2: 'Too many chiefs!', 3: '''You're not the boss of me.'''}
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!teo'):
             d = { 1 : 'Whisper that guy' , 2: 'Nicest guy in the guild.', 3: '''It's probably Teo's fault.'''}
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!tareva'):
             d = { 1 : '...  <-- a joke about being really quiet.' , 2: 'The actual guild leader.  Pulling strings behind the scenes.'}
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!shy'):
             d = { 1 : '''Hey it's Mosh.... Shyrene!!''', 2 : '''Steal some of Lonsham's luck for us already''' }
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!darj'):
             d = { 1 : '''He's got moon''', 2 : '''10 minute break?  Sweet.  Be back in 20.''' }
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!token'):
             d = { 1 : '''https://memegenerator.net/img/instances/81499276/have-you-heard-of-this-thing-the-netherlight-crucible.jpg''', 2 : '''https://memegenerator.net/img/instances/81499311/inc-bud.jpg''' }
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!tonkah') or message.content.lower().startswith('!taunk') or message.content.lower().startswith('!holy'):
             d = { 1 : '''https://memegenerator.net/img/instances/81499360/someone-say-my-name.jpg''', 2 : '''Dad jokes, inc.''' }
             if message.content.lower().startswith('!earth'):
                 d = { 1 : '''The best healer ever, in warcraft, the world, and whatever else he needs to hear to heal.''', 2 : '''He is not listening.''' }
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!eodred') or message.content.lower().startswith('!xorr'):
-            d = { 1 : '''https://memegenerator.net/img/instances/81499486/did-we-hit-every-bomb-on-that-bridge.jpg''', 2 : '''https://memegenerator.net/img/instances/81499514/mmmhhmmm.jpg''', 3: '''*sigh*''' }
-            if message.content.lower().startswith('!xorr'):
-                d = { 1: '''https://i.pinimg.com/originals/fc/14/a3/fc14a3c0632ed3b8ce06c8cae0d43ace.gif'''}
-            k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=None, send_file='eodred.png')
 
         elif message.content.lower().startswith('!mag'):
-            with open('magnollia.png', 'rb') as mag_image:
-                await client.send_file(message.channel, mag_image)
+            await send_message(channel=message.channel, message=None, send_file='magnollia.png')
 
         elif message.content.lower().startswith('!sour'):
             d = { 1 : '''Hold on, hold on, hold on... wait... Reznik, what is the button called that I push to taunt?''', 2 : '''Cracklin' with lightning?  Friend huggin' time.''' }
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!rath'):
-            with open('rathattack.png', 'rb') as rath_image:
-                await client.send_file(message.channel, rath_image)
+            await send_message(channel=message.channel, message=None, send_file='rathattack.png')
+
 
         elif message.content.lower().startswith('!chest') or message.content.lower().startswith('!titan') or message.content.lower().startswith('!resid') or message.content.lower().startswith('!mythic'):
-            with open('mplus_details.png', 'rb') as mplus_details:
-                await client.send_file(message.channel, mplus_details)
+            table = get_table("chest")
+            await send_message(channel=message.channel, message=table, send_file=None)
+
+        elif message.content.lower().startswith('!leggo') or message.content.lower().startswith('!legendary'):
+            table = get_table("leggo")
+            await send_message(channel=message.channel, message=table, send_file=None)
+
+        elif message.content.lower().startswith('!ash'):
+            table = get_table("ash")
+            await send_message(channel=message.channel, message=table, send_file=None)
 
         elif message.content.lower().startswith('!timer'):
-            with open('timers.png', 'rb') as mplus_timers:
-                await client.send_file(message.channel, mplus_timers)
+            await send_message(channel=message.channel, message=None, send_file='timers.png')
 
         elif message.content.lower().startswith('!affix'):
-            with open('affixes.png', 'rb') as mplus_affixes:
-                await client.send_file(message.channel, mplus_affixes)
+            await send_message(channel=message.channel, message=None, send_file='affixes.png')
 
         elif message.content.lower().startswith('!logs'):
             d = { 1 : '''https://www.warcraftlogs.com/guild/us/doomhammer/defiant''' }
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!mythiclogs'):
             d = { 1 : '''https://www.warcraftlogs.com/user/reports-list/401351/''' }
             k, v = random.choice(list(d.items()))
-            await client.send_message(message.channel, v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
+        elif message.content.lower().startswith('!tuesday'):
+            await message.channel.send('''Happy Tuesday Defiant! This weeks affixes are...  ''')
+            message_content = get_affixes_message()
+            await send_message(channel=message.channel, message=message_content, send_file=None)
 
+        elif message.content.lower().startswith('!cmc'):
+            mvals = message.content.split('|')
+            print("mvals are %s" % mvals)
+            mval_channel=discord.Object(id=int(mvals[1]))
+            mval_message=mvals[2]
+            await send_message(channel=mval_channel, message=mval_message, send_file=None)
 
 
 # --------------------- END CLIENT LISTENING METHODS ---------------------
