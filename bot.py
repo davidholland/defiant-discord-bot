@@ -347,10 +347,10 @@ Key Level | Gear iLvL | Chest iLvL
         elif message.content.lower().startswith('!restart'):
             author = message.author
             if author in administrators:
-                v = "User %s permitted to restart" % author
+                v="True"
                 await send_message(channel=message.channel, message=v, send_file=None)
             else:
-                v = "User: %s not permitted to restart" % author
+                v="False"
                 await send_message(channel=message.channel, message=v, send_file=None)
             #close_discord()
 
