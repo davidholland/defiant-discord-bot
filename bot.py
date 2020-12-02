@@ -77,6 +77,12 @@ if token and token != '':
         except Exception as e:
             print("Sending message went wrong: %s" % e)
 
+    def close_discord():
+        try:
+            client.close()
+        except Exception as e:
+            print("Something went wrong: %s" % e)
+
 
     def get_affixes_message():
         message_content = 'Something went wrong'
@@ -330,6 +336,9 @@ M+ Weekly Cache    |    20 Per Keystone Level
 
         elif message.content.lower().startswith('!timer'):
             await send_message(channel=message.channel, message=None, send_file='timers.png')
+
+        elif message.content.lower().startswith('!restart'):
+            close_discord()
 
         elif message.content.lower().startswith('!affix'):
             await send_message(channel=message.channel, message=None, send_file='affixes.png')
