@@ -116,23 +116,23 @@ if token and token != '':
 `Mythic +`
 
 - Gear you will get per keystone level, and in your Great Vault after Tuesday reset.
-```
-Key Level | Gear iLvL | Vault iLvL
------------------------------------
-    2     |    187    |    200
-    3     |    190    |    203
-    4     |    194    |    207
-    5     |    194    |    210
-    6     |    197    |    210
-    7     |    200    |    213
-    8     |    200    |    216
-    9     |    200    |    216
-    10    |    204    |    220
-    11    |    204    |    220
-    12    |    207    |    223
-    13    |    207    |    223
-    14    |    207    |    226
-    15    |    210    |    226 ```
+```apache
+  Key | iLvL End  | iLvL Vault
+--------------------------------
+   2  |    187    |    200
+   3  |    190    |    203
+   4  |    194    |    207
+   5  |    194    |    210
+   6  |    197    |    210
+   7  |    200    |    213
+   8  |    200    |    216
+   9  |    200    |    216
+   10 |    204    |    220
+   11 |    204    |    220
+   12 |    207    |    223
+   13 |    207    |    223
+   14 |    207    |    226
+   15 |    210    |    226 ```
                 '''
 
             elif tableName in ('ash'):
@@ -142,7 +142,7 @@ Key Level | Gear iLvL | Vault iLvL
 - Each Layer in Torghast is 6 levels and wings are open each week.
 - You can only get the Ash from each wing/layer once per week.
 - Running the highest Layer you have unlocked awards all Soul Ash for layers below it. Skipping right to layer 8 awards the full 570 Soul Ash.
-                ```
+                ```apache
   Layer   | Soul Ash
 -----------------------
     1     |    120
@@ -160,7 +160,7 @@ Key Level | Gear iLvL | Vault iLvL
 `Building your Legendary`
 
 - You can skip ranks when building, or upgrade from the previous rank.  Soul Ash costs are the same either way.
-                ```
+                ```apache
   Rank    |  iLvL  |  Ash  |  Upgrade Cost
 --------------------------------------------
     1     |  190   |  1250 |  -
@@ -215,11 +215,13 @@ Key Level | Gear iLvL | Vault iLvL
 
 
         if message.content.lower().startswith('!help'):
-            await message.channel.send('''I'm a work in progress - if there's anything you like to see me be able to do talk to Eodred.
+            await message.channel.send('''
+                `Help Menu`
 
-                Some commands to try:  !help (this menu), !affixes, !logs, !chest, !ash, !legendary, !leggo
-
-                Coming soon: Return of Tuesday announcement with affixes, and Torghast wing information.
+Some commands to try:
+```CSS
+!affixes, !logs, !chest, !ash, !legendary, !leggo```
+Coming soon: Return of Tuesday announcement with affixes, and Torghast wing information.
                 '''
                 )
 
