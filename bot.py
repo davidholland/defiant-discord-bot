@@ -113,8 +113,11 @@ if token and token != '':
         try:
             if tableName in ('chest', 'titan', 'mythic'):
                 table = '''
+`Mythic +`
+
+- Gear you will get per keystone level, and in your Great Vault after Tuesday reset.
 ```
-Key Level | Gear iLvL | Chest iLvL
+Key Level | Gear iLvL | Vault iLvL
 -----------------------------------
     2     |    187    |    200
     3     |    190    |    203
@@ -134,6 +137,11 @@ Key Level | Gear iLvL | Chest iLvL
 
             elif tableName in ('ash'):
                 table = '''
+`Torghast`
+
+- Each Layer in Torghast is 6 levels and wings are open each week.
+- You can only get the Ash from each wing/layer once per week.
+- Running the highest Layer you have unlocked awards all Soul Ash for layers below it. Skipping right to layer 8 awards the full 570 Soul Ash.
                 ```
   Layer   | Soul Ash
 -----------------------
@@ -149,13 +157,16 @@ Key Level | Gear iLvL | Chest iLvL
 
             elif tableName in ('!leggo'):
                 table = '''
+`Building your Legendary`
+
+- You can skip ranks when building, or upgrade from the previous rank.  Soul Ash costs are the same either way.
                 ```
-  Rank    |  Ilvl  |  Soul Ash
---------------------------------
-    1     |  190   |  1250
-    2     |  210   |  2000
-    3     |  225   |  3200
-    4     |  235   |  5150
+  Rank    |  iLvL  |  Ash  |  Upgrade Cost
+--------------------------------------------
+    1     |  190   |  1250 |  -
+    2     |  210   |  2000 |  750
+    3     |  225   |  3200 |  1200
+    4     |  235   |  5150 |  1950
 ```
 '''
 
@@ -207,10 +218,12 @@ Key Level | Gear iLvL | Chest iLvL
             await message.channel.send('''I'm a work in progress - if there's anything you like to see me be able to do talk to Eodred.
                 Defiant website: http://thedefiantguild.com/
 
-                I currently respond to the following commands:  !affixes, !help, !logs, !chest, !titan, !timers
+                I currently respond to the following commands:  !help, !affixes, !logs, !chest, !ash, !legendary
                 There might be a few hidden ones.  We'll see.
                 '''
                 )
+
+############# START USER SPECIFIC / FUN REACTIONS
 
         elif message.content.lower().startswith('!whatday'):
             d = { 1 : '''https://strats-forum-attachments.s3.amazonaws.com/original/2X/5/5c98f26aa5468db7870865429ea404ea32131f67.jpg''', 2 : '''https://i.imgur.com/x0qSq5H.png''', 3 : '''https://memegenerator.net/img/instances/56758076/did-someone-say-raid-night.jpg''', 4 : '''http://s.quickmeme.com/img/18/18c2f6010e5e9cd3c2b868785cfe6628788beff0f46f89c83b2c55cbae7c1502.jpg''' }
@@ -303,6 +316,9 @@ Key Level | Gear iLvL | Chest iLvL
         elif message.content.lower().startswith('!rath'):
             await send_message(channel=message.channel, message=None, send_file='rathattack.png')
 
+############# END USER SPECIFIC / FUN REACTIONS
+
+############# START SYSTEM REACTIONS
 
         elif message.content.lower().startswith('!chest') or message.content.lower().startswith('!titan') or message.content.lower().startswith('!resid') or message.content.lower().startswith('!mythic'):
             table = get_table("chest")
