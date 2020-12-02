@@ -22,6 +22,7 @@ if os.path.isfile('settings.config'):
     environment = config.get("BOT_SETTINGS", 'environment')
     token = config.get("BOT_SETTINGS", 'token')
     base_directory = config.get("BOT_SETTINGS", 'base_directory')
+    administrators = config.get("BOT_SETTINGS", "administrators")
 
     if environment == 'PROD':
         wow_channel = config.get("BOT_SETTINGS", 'wow_channel')
@@ -344,8 +345,13 @@ Key Level | Gear iLvL | Chest iLvL
             await send_message(channel=mval_channel, message=mval_message, send_file=None)
 
         elif message.content.lower().startswith('!restart'):
-            v = message.author
-            await send_message(channel=message.channel, message=v, send_file=None)
+            author = message.author
+            if author in administrators:
+                v = "User %s permitted to restart" % author
+                await send_message(channel=message.channel, message=v, send_file=None)
+            else:
+                v = "User: %s not permitted to restart" % author
+                await send_message(channel=message.channel, message=v, send_file=None)
             #close_discord()
 
 
