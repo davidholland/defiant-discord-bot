@@ -216,10 +216,10 @@ Key Level | Gear iLvL | Vault iLvL
 
         if message.content.lower().startswith('!help'):
             await message.channel.send('''I'm a work in progress - if there's anything you like to see me be able to do talk to Eodred.
-                Defiant website: http://thedefiantguild.com/
 
-                I currently respond to the following commands:  !help, !affixes, !logs, !chest, !ash, !legendary
-                There might be a few hidden ones.  We'll see.
+                Some commands to try:  !help (this menu), !affixes, !logs, !chest, !ash, !legendary, !leggo
+
+                Coming soon: Return of Tuesday announcement with affixes, and Torghast wing information.
                 '''
                 )
 
