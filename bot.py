@@ -49,6 +49,12 @@ if token and token != '':
         print(client.user.id)
         print('------')
 
+    def close_discord():
+        try:
+            exit()
+        except Exception as e:
+            print("Something went wrong: %s" % e)
+
 # --------------------- TIMED MESSAGES ---------------------
     #Tuesday morning announcements
     async def tuesday_morning_announces():
@@ -76,12 +82,6 @@ if token and token != '':
                 await channel.send(file=discord.File(send_file))
         except Exception as e:
             print("Sending message went wrong: %s" % e)
-
-    def close_discord():
-        try:
-            client.close()
-        except Exception as e:
-            print("Something went wrong: %s" % e)
 
 
     def get_affixes_message():
@@ -129,25 +129,6 @@ Key Level | Gear iLvL | Chest iLvL
     13    |    207    |    223
     14    |    207    |    226
     15    |    210    |    226 ```
-                '''
-            elif tableName in ('echo'):
-                table = '''
-                ```
-Activity           | Amount of Echoes of Ny'alotha
---------------------------------------------------
-Horrific Visions   |    150 (Full Clear)
-Major Assaults     |    125
-Minor Assaults     |    75
-Emissaries         |    50
-Raid Boss (1/wk)   |    15-25
-LFR Wing           |    25
-Random BG Win      |    15-25
-Rated Arena Win    |    10-25 (Increases with PvP Rank)
-RBG Win            |    35+ (Increases with PvP Rank)
-Mythic + Dungeon   |    3 Per Keystone level
-PVP Weekly Cache   |    175-300 (Increases with PvP Rank)
-M+ Weekly Cache    |    20 Per Keystone Level
-                ```
                 '''
 
             elif tableName in ('ash'):
@@ -337,9 +318,6 @@ M+ Weekly Cache    |    20 Per Keystone Level
         elif message.content.lower().startswith('!timer'):
             await send_message(channel=message.channel, message=None, send_file='timers.png')
 
-        elif message.content.lower().startswith('!restart'):
-            close_discord()
-
         elif message.content.lower().startswith('!affix'):
             await send_message(channel=message.channel, message=None, send_file='affixes.png')
 
@@ -364,6 +342,11 @@ M+ Weekly Cache    |    20 Per Keystone Level
             mval_channel=discord.Object(id=int(mvals[1]))
             mval_message=mvals[2]
             await send_message(channel=mval_channel, message=mval_message, send_file=None)
+
+        elif message.content.lower().startswith('!restart'):
+            v = message.author
+            await send_message(channel=message.channel, message=v, send_file=None)
+            #close_discord()
 
 
 # --------------------- END CLIENT LISTENING METHODS ---------------------
