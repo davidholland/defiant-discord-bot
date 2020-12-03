@@ -397,7 +397,7 @@ There are a few key principles that have enabled such a longstanding and enjoyab
 5.  Do not petition guild members for gold, carries, gear, materials, or boosted runs.
 6.  Pants are optional, and never enforced.```
 '''
-            await channel.send(welcomechannel,v)
+            await welcomechannel.send(welcomechannel,v)
 
 # --------------------- END CLIENT LISTENING METHODS ---------------------77946686891425797
 
