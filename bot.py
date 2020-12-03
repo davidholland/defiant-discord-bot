@@ -370,7 +370,6 @@ Coming soon: Return of Tuesday announcement with affixes, and Torghast wing info
                 close_discord()
 
         elif message.content.lower().startswith('!welcome'):
-            welcomechannel = discord.Object(id=418521378514534410)
             v = '''
 ***Welcome to Defiant! We are glad that you are here!***
 
@@ -397,7 +396,7 @@ There are a few key principles that have enabled such a longstanding and enjoyab
 5.  Do not petition guild members for gold, carries, gear, materials, or boosted runs.
 6.  Pants are optional, and never enforced.```
 '''
-            await welcomechannel.send(welcomechannel,v)
+            await send_message(channel=message.channel, message=v, send_file=None)
 
 # --------------------- END CLIENT LISTENING METHODS ---------------------77946686891425797
 
