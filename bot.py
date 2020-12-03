@@ -370,7 +370,9 @@ Coming soon: Return of Tuesday announcement with affixes, and Torghast wing info
                 close_discord()
 
         elif message.content.lower().startswith('!welcome'):
-            v = '''
+            author = message.author
+            if str(author) in administrators:
+                v = '''
 ***Welcome to Defiant! We are glad that you are here!***
 
 Before you click into the rest of the Discord here is some background on Defiant and some guidelines that help us remain a positive place for people to be and to hang out.
@@ -396,7 +398,7 @@ There are a few key principles that have enabled such a longstanding and enjoyab
 5.  Do not petition guild members for gold, carries, gear, materials, or boosted runs.
 6.  Pants are optional, and never enforced.```
 '''
-            await send_message(channel=message.channel, message=v, send_file=None)
+                await send_message(channel=message.channel, message=v, send_file=None)
 
 # --------------------- END CLIENT LISTENING METHODS ---------------------77946686891425797
 
