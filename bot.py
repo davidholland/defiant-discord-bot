@@ -369,7 +369,37 @@ Coming soon: Return of Tuesday announcement with affixes, and Torghast wing info
                 await send_message(channel=message.channel, message=v, send_file=None)
                 close_discord()
 
-# --------------------- END CLIENT LISTENING METHODS ---------------------
+        elif message.content.lower().startswith('!welcome'):
+            welcomechannel = discord.Object(id=418521378514534410)
+            v = '''
+***Welcome to Defiant! We are glad that you are here!***
+
+Before you click into the rest of the Discord here is some background on Defiant and some guidelines that help us remain a positive place for people to be and to hang out.
+
+**About**
+Defiant is a group of friends and family on the Doomhammer / Baelgun playing since the days of Vanilla WoW.  We are primarily adults and come from all walks of life.  Our core principle is putting people first.  We Raid, M+, PvP and quest together, but more importantly, become friends.  Guild leadership is made up of a council of GMs making decisions with the input from our officers and members.
+
+**Success**
+Defiant consistently achieves the “Ahead of the Curve” achievement while raiding. We are not “hard-core” raiders, but we are serious about doing well and experiencing the content to the fullest. Consequently, we do not officially raid on mythic difficulty, as mythic raiding tends to require a more hard-core mindset and management style.
+
+**Formula**
+There are a few key principles that have enabled such a longstanding and enjoyable guild culture.
+- We are a decidedly no-drama guild. Keeping this in mind maintains a respectful and fun atmosphere.
+- We respect and encourage different play-styles and intensities.
+- WoW is a game. Real life (RL) takes precedence in all situations.
+
+**Guild Rules**
+```
+1.  No drama.
+2.  Defiant is a family-friendly guild. Swearing and lewd discussion is prohibited.
+3.  Discrimination or derogatory discussion of age, sex, gender, race, religion, handicaps, sexual orientation, etc. is prohibited.
+4.  Discussion of drama-prone topics, such as politics or religion, etc. should be avoided.
+5.  Do not petition guild members for gold, carries, gear, materials, or boosted runs.
+6.  Pants are optional, and never enforced.```
+'''
+            await send_message(channel=welcomechannel, message=v)
+
+# --------------------- END CLIENT LISTENING METHODS ---------------------77946686891425797
 
     #Start the client
     client.run(token)
