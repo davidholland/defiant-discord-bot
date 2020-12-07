@@ -143,16 +143,16 @@ if token and token != '':
 - You can only get the Ash from each wing/layer once per week.
 - Running the highest Layer you have unlocked awards all Soul Ash for layers below it. Skipping right to layer 8 awards the full 570 Soul Ash.
                 ```apache
-  Layer   | Soul Ash
------------------------
-    1     |    120
-    2     |    100
-    3     |    85
-    4     |    70
-    5     |    60
-    6     |    50
-    7     |    45
-    8     |    40    ```
+  Layer   | Soul Ash  |  Total  |  Weekly Cap
+----------------------------------------------
+    1     |    120    |  120    |  240
+    2     |    100    |  220    |  440
+    3     |    85     |  305    |  610
+    4     |    70     |  375    |  750
+    5     |    60     |  435    |  870
+    6     |    50     |  485    |  970
+    7     |    45     |  530    |  1060
+    8     |    40     |  570    |  1140```
     '''
 
             elif tableName in ('!leggo'):
