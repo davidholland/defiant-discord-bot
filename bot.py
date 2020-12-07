@@ -330,7 +330,7 @@ Coming soon: Return of Tuesday announcement with affixes, and Torghast wing info
             table = get_table("leggo")
             await send_message(channel=message.channel, message=table, send_file=None)
 
-        elif message.content.lower().startswith('!ash'):
+        elif message.content.lower().startswith('!ash') or message.content.lower().startswith('!soulash'):
             table = get_table("ash")
             await send_message(channel=message.channel, message=table, send_file=None)
 
