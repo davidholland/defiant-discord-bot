@@ -60,13 +60,13 @@ if token and token != '':
     #Tuesday morning announcements
     async def tuesday_morning_announces():
         await client.wait_until_ready()
-        channel = discord.Object(id=wow_channel)
+        channel = client.get_channel(wow_channel)
         while not client.is_closed:
             now = datetime.datetime.now()
             if now.weekday() == 1 and now.hour == 9 and now.minute == 15:
-                await channel.send(channel, '''Happy Tuesday Defiant! This weeks affixes are...  ''')
+                await channel.send('''Happy Tuesday Defiant! This weeks affixes are...  ''')
                 message_content = get_affixes_message()
-                await channel.send(channel, message_content)
+                await channel.send(message_content)
             await asyncio.sleep(60) # task runs every 60 seconds
 
     client.loop.create_task(tuesday_morning_announces())
@@ -155,7 +155,7 @@ if token and token != '':
     8     |    40     |  570    |  1140```
     '''
 
-            elif tableName in ('!leggo'):
+            elif tableName in ('leggo'):
                 table = '''
 `Building your Legendary`
 
@@ -174,37 +174,6 @@ if token and token != '':
             logger.error('Error REPLACE Message: %s' % (e))
             return table
         return table
-
-    def get_building_progress():
-
-        def get_state_translation(state_number):
-            state = 'Unknown'
-            if state_number == 1:
-                state = 'Under Construction'
-            elif state_number == 2:
-                state = 'Complete!'
-            elif state_number == 3:
-                state = 'Under Attack'
-            return state
-
-        raw = requests.get(buildings_url, headers=headers, verify=False)
-        match = re.search(r'{\"US\":(.*?}})', raw.content.decode('utf-8'))
-        clean_match = match[1].replace("null", "0")
-        build_dict = ast.literal_eval(clean_match)
-
-        #Mage Tower Info
-        mt_state = get_state_translation(build_dict['1']['state'])
-        mt_percent = build_dict['1']['contributed']
-        #Command Center Info
-        cc_state = get_state_translation(build_dict['2']['state'])
-        cc_percent = build_dict['2']['contributed']
-        #Nether Disruptor Info
-        nd_state = get_state_translation(build_dict['3']['state'])
-        nd_percent = build_dict['3']['contributed']
-
-
-        return mt_percent, cc_percent, nd_percent, mt_state, cc_state, nd_state
-
 
 # --------------------- END HELPER METHODS ---------------------
 
@@ -226,10 +195,6 @@ Coming soon: Return of Tuesday announcement with affixes, and Torghast wing info
                 )
 
 ############# START USER SPECIFIC / FUN REACTIONS
-
-        elif message.content.lower().startswith('!davetest'):
-            channel = client.get_channel(418521378514534410)
-            await channel.send('''I do a test.''')
 
         elif message.content.lower().startswith('!whatday'):
             d = { 1 : '''https://strats-forum-attachments.s3.amazonaws.com/original/2X/5/5c98f26aa5468db7870865429ea404ea32131f67.jpg''', 2 : '''https://i.imgur.com/x0qSq5H.png''', 3 : '''https://memegenerator.net/img/instances/56758076/did-someone-say-raid-night.jpg''', 4 : '''http://s.quickmeme.com/img/18/18c2f6010e5e9cd3c2b868785cfe6628788beff0f46f89c83b2c55cbae7c1502.jpg''' }
