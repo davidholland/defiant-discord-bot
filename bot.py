@@ -228,7 +228,7 @@ Coming soon: Return of Tuesday announcement with affixes, and Torghast wing info
 ############# START USER SPECIFIC / FUN REACTIONS
 
         elif message.content.lower().startswith('!davetest'):
-            channel = discord.Object(id=418521378514534410)
+            channel = discord.get_channel(418521378514534410)
             await channel.send(channel, '''I do a test.''')
 
         elif message.content.lower().startswith('!whatday'):
