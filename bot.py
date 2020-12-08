@@ -229,7 +229,7 @@ Coming soon: Return of Tuesday announcement with affixes, and Torghast wing info
 
         elif message.content.lower().startswith('!davetest'):
             channel = client.get_channel(418521378514534410)
-            await channel.send(channel, '''I do a test.''')
+            await channel.send('''I do a test.''')
 
         elif message.content.lower().startswith('!whatday'):
             d = { 1 : '''https://strats-forum-attachments.s3.amazonaws.com/original/2X/5/5c98f26aa5468db7870865429ea404ea32131f67.jpg''', 2 : '''https://i.imgur.com/x0qSq5H.png''', 3 : '''https://memegenerator.net/img/instances/56758076/did-someone-say-raid-night.jpg''', 4 : '''http://s.quickmeme.com/img/18/18c2f6010e5e9cd3c2b868785cfe6628788beff0f46f89c83b2c55cbae7c1502.jpg''' }
