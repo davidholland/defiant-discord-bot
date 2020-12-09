@@ -331,6 +331,9 @@ Coming soon: Return of Tuesday announcement with affixes, and Torghast wing info
             mval_message=mvals[2]
             await send_message(channel=mval_channel, message=mval_message, send_file=None)
 
+        elif message.content.lower().startswith('!vault') or message.content.lower().startswith('!greatvault') or message.content.lower().startswith('!gv'):
+            await send_message(channel=message.channel, message=None, send_file='gv.png')
+
         elif message.content.lower().startswith('!restart'):
             author = message.author
             if str(author) in administrators:
