@@ -142,7 +142,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
             raw = requests.get(affixes_url, headers=headers, verify=False)
             page_data = json.loads(raw.content)
             affixes = page_data['title']
-            message_content = ''' -
+            message_content = '''
                     **%s**  |  **%s**  |  **%s**  |  **%s**
 
                     **%s** - %s
