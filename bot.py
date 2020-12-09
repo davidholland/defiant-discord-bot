@@ -386,6 +386,11 @@ Some commands to try:
         elif message.content.lower().startswith('!vault') or message.content.lower().startswith('!greatvault') or message.content.lower().startswith('!gv'):
             await send_message(channel=message.channel, message=None, send_file='gv.png')
 
+        elif message.content.lower().startswith('!renown'):
+            max_renown = get_max_renown()
+            response = 'Current Renown Cap: %s' % str(max_renown)
+            await send_message(channel=message.channel, message=response, send_file=None)
+
         elif message.content.lower().startswith('!restart'):
             author = message.author
             if str(author) in administrators:
