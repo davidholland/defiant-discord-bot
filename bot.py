@@ -103,7 +103,6 @@ __Details for the week of %s/%s/%s__
 Weekly Renown cap:  %s
 Torghast wings open: %s, %s *(coming soon)*
 ```
-
 The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,max_renown, wing_1, wing_2)
         except Exception as e:
             print("A thing broke: %s" % e)
@@ -242,7 +241,6 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 Some commands to try:
 ```CSS
 !affixes, !logs, !chest, !ash, !soulash, !legendary, !leggo, !vault, !greatvault```
-Coming soon: Return of Tuesday announcement with affixes, and Torghast wing information.
                 '''
                 )
 
