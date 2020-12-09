@@ -352,7 +352,13 @@ Coming soon: Return of Tuesday announcement with affixes, and Torghast wing info
             await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!tuesday'):
-            await message.channel.send('''Happy Tuesday Defiant! This weeks affixes are...  ''')
+            max_renown = get_max_renown()
+            await message.channel.send('''
+Happy Tuesday Defiant!
+
+The covenant renown cap for this week is: %s
+
+This weeks affixes are...  ''' % (max_renown))
             message_content = get_affixes_message()
             await send_message(channel=message.channel, message=message_content, send_file=None)
 
