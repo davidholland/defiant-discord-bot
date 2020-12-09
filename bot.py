@@ -89,14 +89,22 @@ if token and token != '':
 
     def get_tuesday_message():
         message = '''Happy Tuesday Defiant!'''
+        wing_1 = "Wing One"
+        wing_2 = "Wing Two"
         try:
+            date_today = datetime.datetime.now()
             max_renown=get_max_renown()
-            message='''
+            message='''**Good Morning!**
+
 Happy Tuesday Defiant!
 
-The covenant renown cap for this week is: %s
+__Details for the week of %s/%s/%s__
+```
+Weekly Renown cap:  %s
+Torghast wings open: %s, %s *(coming soon)*
+```
 
-This weeks affixes are...  ''' % (max_renown)
+The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,max_renown, wing_1, wing_2)
         except Exception as e:
             print("A thing broke: %s" % e)
             return message
@@ -135,7 +143,7 @@ This weeks affixes are...  ''' % (max_renown)
             raw = requests.get(affixes_url, headers=headers, verify=False)
             page_data = json.loads(raw.content)
             affixes = page_data['title']
-            message_content = '''
+            message_content = ''' -
                     **%s**  |  **%s**  |  **%s**  |  **%s**
 
                     **%s** - %s
