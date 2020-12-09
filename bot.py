@@ -63,15 +63,11 @@ if token and token != '':
         await client.wait_until_ready()
         channel = client.get_channel(wow_channel)
         max_renown = get_max_renown()
+        tuesday_message = get_tuesday_message()
         while not client.is_closed:
             now = datetime.datetime.now()
             if now.weekday() == 1 and now.hour == 9 and now.minute == 15:
-                await channel.send('''
-Happy Tuesday Defiant!
-
-The covenant renown cap for this week is: %s
-
-This weeks affixes are...  ''' % (max_renown))
+                await channel.send(tuesday_message)
                 message_content = get_affixes_message()
                 await channel.send(message_content)
             await asyncio.sleep(60) # task runs every 60 seconds
@@ -90,6 +86,22 @@ This weeks affixes are...  ''' % (max_renown))
                 await channel.send(file=discord.File(send_file))
         except Exception as e:
             print("Sending message went wrong: %s" % e)
+
+    def get_tuesday_message():
+        message = '''Happy Tuesday Defiant!'''
+        try:
+            max_renown=get_max_renown()
+            message='''
+Happy Tuesday Defiant!
+
+The covenant renown cap for this week is: %s
+
+This weeks affixes are...  ''' % (max_renown)
+        except Exception as e:
+            print("A thing broke: %s" % e)
+            return message
+        return message
+
 
     def calculate_weeks_since(start="11/22/2020"): #Default to start of expansion
         try:
@@ -353,12 +365,8 @@ Coming soon: Return of Tuesday announcement with affixes, and Torghast wing info
 
         elif message.content.lower().startswith('!tuesday'):
             max_renown = get_max_renown()
-            await message.channel.send('''
-Happy Tuesday Defiant!
-
-The covenant renown cap for this week is: %s
-
-This weeks affixes are...  ''' % (max_renown))
+            tuesday_message = get_tuesday_message()
+            await send_message(channel=message.channel, message=tuesday_message, send_file=None)
             message_content = get_affixes_message()
             await send_message(channel=message.channel, message=message_content, send_file=None)
 
