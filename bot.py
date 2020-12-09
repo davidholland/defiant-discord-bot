@@ -1,6 +1,7 @@
 import discord
 import configparser
 import datetime
+import calendar
 import requests
 import asyncio
 import random
@@ -61,10 +62,16 @@ if token and token != '':
     async def tuesday_morning_announces():
         await client.wait_until_ready()
         channel = client.get_channel(wow_channel)
+        max_renown = get_max_renown()
         while not client.is_closed:
             now = datetime.datetime.now()
             if now.weekday() == 1 and now.hour == 9 and now.minute == 15:
-                await channel.send('''Happy Tuesday Defiant! This weeks affixes are...  ''')
+                await channel.send('''
+Happy Tuesday Defiant!
+
+The covenant renown cap for this week is: %s
+
+This weeks affixes are...  ''' % (max_renown))
                 message_content = get_affixes_message()
                 await channel.send(message_content)
             await asyncio.sleep(60) # task runs every 60 seconds
@@ -84,6 +91,31 @@ if token and token != '':
         except Exception as e:
             print("Sending message went wrong: %s" % e)
 
+    def calculate_weeks_since(start="11/22/2020"): #Default to start of expansion
+        try:
+            start_date  = datetime.datetime.strptime(start, '%m/%d/%Y')
+            end_date    = datetime.datetime.today()
+            week        = {}
+            for i in range((end_date - start_date).days):
+                day       = calendar.day_name[(start_date + datetime.timedelta(days=i+1)).weekday()]
+                week[day] = week[day] + 1 if day in week else 1
+            monday_count = week["Monday"]
+        except Exception as e:
+            return "Something went poorly: %s" % (str(e))
+        return monday_count
+
+
+    def get_max_renown():
+        max_renown = 1
+        try:
+            week = int(calculate_weeks_since())
+            if week > 16:
+                week=16
+            renown={1:3,2:6,3:9,4:12,5:15,6:18,7:22,8:24,9:26,10:28,11:30,12:32,13:34,14:36,15:38,16:40}
+            max_renown = renown[week]
+        except Exception as e:
+            print("Something went wrong: %s" % e)
+        return max_renown
 
     def get_affixes_message():
         message_content = 'Something went wrong'
@@ -189,7 +221,7 @@ if token and token != '':
 
 Some commands to try:
 ```CSS
-!affixes, !logs, !chest, !ash, !legendary, !leggo```
+!affixes, !logs, !chest, !ash, !soulash, !legendary, !leggo, !vault, !greatvault```
 Coming soon: Return of Tuesday announcement with affixes, and Torghast wing information.
                 '''
                 )
