@@ -220,6 +220,23 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
     4     |  235   |  5150 |  1950
 ```
 '''
+            elif tableName in ('timers'):
+                table = '''
+`Mythic + Timers`
+
+- The timers for each M+
+```json
+   Dungeon               |  +1   |  +2   |  +3
+-------------------------------------------------
+   De Other Side         | 37:00 | 29:36 | 22:12
+   Halls of Atonement    | 34:00 | 27:12 | 20:24
+   Mists of Tirna Scithe | 30:00 | 24:00 | 18:00
+   Necrotic Wake         | 32:00 | 25:36 | 19:12
+   Plaguefall            | 38:00 | 30:24 | 22:48
+   Sanguine Depths       | 41:00 | 32:48 | 24:36
+   Spires of Ascension   | 36:00 | 28:48 | 21:36
+   Theater of Pain       | 40:00 | 32:00 | 24:00 ```
+'''
 
         except Exception as e:
             logger.error('Error REPLACE Message: %s' % (e))
