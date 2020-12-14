@@ -371,7 +371,8 @@ Some commands to try:
             await send_message(channel=message.channel, message=table, send_file=None)
 
         elif message.content.lower().startswith('!timer'):
-            await send_message(channel=message.channel, message=None, send_file='timers.png')
+            table = get_table("timers")
+            await send_message(channel=message.channel, message=table, send_file=None)
 
         elif message.content.lower().startswith('!affix'):
             await send_message(channel=message.channel, message=None, send_file='affixes.png')
