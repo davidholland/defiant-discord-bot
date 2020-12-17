@@ -50,7 +50,7 @@ if token and token != '':
         Logged in as %s
         With UserID %s
         ''' % (client.user.name, str(client.user.id))
-        log_bot_error(error=log)
+        await log_bot_error(error=log)
         print('Logged in as')
         print(client.user.name)
         print(client.user.id)
