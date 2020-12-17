@@ -61,17 +61,20 @@ if token and token != '':
 # --------------------- TIMED MESSAGES ---------------------
     #Tuesday morning announcements
     async def tuesday_morning_announces():
-        await client.wait_until_ready()
-        channel = client.get_channel(wow_channel)
-        max_renown = get_max_renown()
-        tuesday_message = get_tuesday_message()
-        while not client.is_closed:
-            now = datetime.datetime.now()
-            if now.weekday() == 1 and now.hour == 9 and now.minute == 15:
-                await channel.send(tuesday_message)
-                message_content = get_affixes_message()
-                await channel.send(message_content)
-            await asyncio.sleep(60) # task runs every 60 seconds
+        try:
+            await client.wait_until_ready()
+            channel = client.get_channel(wow_channel)
+            max_renown = get_max_renown()
+            tuesday_message = get_tuesday_message()
+            while not client.is_closed:
+                now = datetime.datetime.now()
+                if now.weekday() == 1 and now.hour == 9 and now.minute == 15:
+                    await channel.send(tuesday_message)
+                    message_content = get_affixes_message()
+                    await channel.send(message_content)
+                await asyncio.sleep(60) # task runs every 60 seconds
+        except Exception as e:
+            await log_bot_error(error=e)
 
     client.loop.create_task(tuesday_morning_announces())
 
@@ -88,7 +91,9 @@ if token and token != '':
         except Exception as e:
             print("Sending message went wrong: %s" % e)
 
-    async def log_bot_error(message):
+    async def log_bot_error(error):
+        message='''Error:
+        %s''' % str(error)
         channel=client.get_channel(error_channel)
         await send_message(channel=channel, message=message)
 
@@ -421,17 +426,14 @@ Some commands to try:
                 await send_message(channel=message.channel, message=v, send_file=None)
                 close_discord()
 
-        elif message.content.lower().startswith('!error'):
+        elif message.content.lower().startswith('!errortest'):
             author = message.author
             if str(author) in administrators:
-                v="This is an error log!"
-                await log_bot_error(message=v)
-
-        elif message.content.lower().startswith('!catch'):
-            try:
-                await log_bot_error(goat)
-            except Exception as e:
-                await log_bot_error(message=e)
+                try:
+                    goat(horse)
+                    await send_message(channel=message.channel, message=v, send_file=None)
+                except Exception as e:
+                    await log_bot_error(error=e)
 
         elif message.content.lower().startswith('!welcome'):
             author = message.author
