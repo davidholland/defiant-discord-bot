@@ -27,26 +27,30 @@ if os.path.isfile('settings.config'):
 
     if environment == 'PROD':
         error_channel = int(config.get("BOT_SETTINGS", "error_channel"))
-        wow_channel = config.get("BOT_SETTINGS", 'wow_channel')
-        broadcast_channel = config.get("BOT_SETTINGS", 'broadcast_channel')
-        test_channel = config.get("BOT_SETTINGS", 'test_channel')
+        wow_channel = int(config.get("BOT_SETTINGS", 'wow_channel'))
+        broadcast_channel = int(config.get("BOT_SETTINGS", 'broadcast_channel'))
+        test_channel = int(config.get("BOT_SETTINGS", 'test_channel'))
 
     if environment == 'TEST':
-        wow_channel = config.get("BOT_SETTINGS", 'test_channel')
-        broadcast_channel = config.get("BOT_SETTINGS", 'test_channel')
-        test_channel = config.get("BOT_SETTINGS", 'test_channel')
-
+        wow_channel = int(config.get("BOT_SETTINGS", 'test_channel'))
+        broadcast_channel = int(config.get("BOT_SETTINGS", 'test_channel'))
+        test_channel = int(config.get("BOT_SETTINGS", 'test_channel'))
 
 
 headers={'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0'}
 affixes_url = "https://raider.io/api/v1/mythic-plus/affixes?region=us"
 buildings_url = "https://wow.gameinfo.io/broken-isles-buildings"
 
-
 if token and token != '':
     client = discord.Client()
     @client.event
     async def on_ready():
+        log = '''
+        Hello!  I just started.
+        Logged in as %s
+        With UserID %s
+        ''' % (client.user.name, str(client.user.id))
+        await log_bot_error(error=log)
         print('Logged in as')
         print(client.user.name)
         print(client.user.id)
@@ -56,7 +60,7 @@ if token and token != '':
         try:
             exit()
         except Exception as e:
-            print("Something went wrong: %s" % e)
+            await log_bot_error(error=e)
 
 # --------------------- TIMED MESSAGES ---------------------
     #Tuesday morning announcements
@@ -89,7 +93,7 @@ if token and token != '':
             elif send_file and not message:
                 await channel.send(file=discord.File(send_file))
         except Exception as e:
-            print("Sending message went wrong: %s" % e)
+            await log_bot_error(error=e)
 
     async def log_bot_error(error):
         message='''Error:
@@ -130,7 +134,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
                 week[day] = week[day] + 1 if day in week else 1
             monday_count = week["Monday"]
         except Exception as e:
-            return "Something went poorly: %s" % (str(e))
+            await log_bot_error(error=e)
         return monday_count
 
 
@@ -143,7 +147,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
             renown={1:3,2:6,3:9,4:12,5:15,6:18,7:22,8:24,9:26,10:28,11:30,12:32,13:34,14:36,15:38,16:40}
             max_renown = renown[week]
         except Exception as e:
-            print("Something went wrong: %s" % e)
+            await log_bot_error(error=e)
         return max_renown
 
     def get_affixes_message():
@@ -166,7 +170,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
                         page_data['affix_details'][3]['name'], page_data['affix_details'][3]['description']
                         )
         except Exception as e:
-            print("Something went wrong: %s" % e)
+            await log_bot_error(error=e)
         return message_content
 
     def get_table(tableName):
@@ -249,7 +253,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 '''
 
         except Exception as e:
-            logger.error('Error REPLACE Message: %s' % (e))
+            await log_bot_error(error=e)
             return table
         return table
 
@@ -426,19 +430,6 @@ Some commands to try:
                 await send_message(channel=message.channel, message=v, send_file=None)
                 close_discord()
 
-        elif message.content.lower().startswith("!channelcheck"):
-            channel_id=error_channel
-            await send_message(channel=message.channel, message=channel_id)
-
-        elif message.content.lower().startswith('!errortest'):
-            author = message.author
-            if str(author) in administrators:
-                try:
-                    goat(horse)
-                    await send_message(channel=message.channel, message=v, send_file=None)
-                except Exception as e:
-                    await log_bot_error(error=e)
-
         elif message.content.lower().startswith('!welcome'):
             author = message.author
             if str(author) in administrators:
@@ -474,7 +465,6 @@ There are a few key principles that have enabled such a longstanding and enjoyab
 
     #Start the client
     client.run(token)
-
 
 else:
     print("You need to set your token in the settings.config file.")
