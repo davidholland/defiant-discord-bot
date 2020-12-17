@@ -26,7 +26,7 @@ if os.path.isfile('settings.config'):
     administrators = config.get("BOT_SETTINGS", "administrators")
 
     if environment == 'PROD':
-        error_channel = config.get("BOT_SETTINGS", "error_channel")
+        error_channel = int(config.get("BOT_SETTINGS", "error_channel"))
         wow_channel = config.get("BOT_SETTINGS", 'wow_channel')
         broadcast_channel = config.get("BOT_SETTINGS", 'broadcast_channel')
         test_channel = config.get("BOT_SETTINGS", 'test_channel')
