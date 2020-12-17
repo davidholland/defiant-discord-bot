@@ -426,6 +426,10 @@ Some commands to try:
                 await send_message(channel=message.channel, message=v, send_file=None)
                 close_discord()
 
+        elif message.content.lower().startswith("!channelcheck"):
+            channel_id=error_channel
+            await send_message(channel=message.channel, message=channel_id)
+
         elif message.content.lower().startswith('!errortest'):
             author = message.author
             if str(author) in administrators:
