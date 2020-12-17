@@ -425,7 +425,7 @@ Some commands to try:
             author = message.author
             if str(author) in administrators:
                 v="This is an error log!"
-                log_bot_error(message=v)
+                await log_bot_error(message=v)
 
         elif message.content.lower().startswith('!welcome'):
             author = message.author
