@@ -45,12 +45,6 @@ if token and token != '':
     client = discord.Client()
     @client.event
     async def on_ready():
-        log = '''
-        Hello!  I just started.
-        Logged in as %s
-        With UserID %s
-        ''' % (client.user.name, str(client.user.id))
-        await log_bot_error(error=log)
         print('Logged in as')
         print(client.user.name)
         print(client.user.id)
@@ -465,6 +459,12 @@ There are a few key principles that have enabled such a longstanding and enjoyab
 
     #Start the client
     client.run(token)
+    log = '''
+    Hello!  I just started.
+    Logged in as %s
+    With UserID %s
+    ''' % (client.user.name, str(client.user.id))
+    await log_bot_error(error=log)
 
 else:
     print("You need to set your token in the settings.config file.")
