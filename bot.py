@@ -88,7 +88,7 @@ if token and token != '':
         except Exception as e:
             print("Sending message went wrong: %s" % e)
 
-    def log_bot_error(message):
+    async def log_bot_error(message):
         channel=client.get_channel(error_channel)
         await send_message(channel=channel, message=message)
 
