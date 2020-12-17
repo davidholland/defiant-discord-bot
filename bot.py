@@ -427,6 +427,12 @@ Some commands to try:
                 v="This is an error log!"
                 await log_bot_error(message=v)
 
+        elif message.content.lower().startswith('!catch'):
+            try:
+                await log_bot_error(goat)
+            except Exception as e:
+                await log_bot_error(message=e)
+
         elif message.content.lower().startswith('!welcome'):
             author = message.author
             if str(author) in administrators:
