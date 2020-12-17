@@ -54,7 +54,7 @@ if token and token != '':
         try:
             exit()
         except Exception as e:
-            await log_bot_error(error=e)
+            log_bot_error(error=e)
 
 # --------------------- TIMED MESSAGES ---------------------
     #Tuesday morning announcements
@@ -464,7 +464,7 @@ There are a few key principles that have enabled such a longstanding and enjoyab
     Logged in as %s
     With UserID %s
     ''' % (client.user.name, str(client.user.id))
-    await log_bot_error(error=log)
+    log_bot_error(error=log)
 
 else:
     print("You need to set your token in the settings.config file.")
