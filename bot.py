@@ -247,7 +247,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 '''
 
         except Exception as e:
-            await log_bot_error(error=e)
+            log_bot_error(error=e)
             return table
         return table
 
