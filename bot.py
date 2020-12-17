@@ -128,7 +128,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
                 week[day] = week[day] + 1 if day in week else 1
             monday_count = week["Monday"]
         except Exception as e:
-            await log_bot_error(error=e)
+            log_bot_error(error=e)
         return monday_count
 
 
@@ -141,7 +141,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
             renown={1:3,2:6,3:9,4:12,5:15,6:18,7:22,8:24,9:26,10:28,11:30,12:32,13:34,14:36,15:38,16:40}
             max_renown = renown[week]
         except Exception as e:
-            await log_bot_error(error=e)
+            log_bot_error(error=e)
         return max_renown
 
     def get_affixes_message():
@@ -164,7 +164,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
                         page_data['affix_details'][3]['name'], page_data['affix_details'][3]['description']
                         )
         except Exception as e:
-            await log_bot_error(error=e)
+            log_bot_error(error=e)
         return message_content
 
     def get_table(tableName):
