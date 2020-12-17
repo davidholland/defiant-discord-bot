@@ -45,12 +45,11 @@ if token and token != '':
     client = discord.Client()
     @client.event
     async def on_ready():
-        log = '''
-        Hello!  I just started.
+        log = '''Hello!  I just started.
         Logged in as %s
         With UserID %s
         ''' % (client.user.name, str(client.user.id))
-        await log_bot_error(error=log)
+        await log_bot_error(error=log, log_type='info')
         print('Logged in as')
         print(client.user.name)
         print(client.user.id)
@@ -95,9 +94,13 @@ if token and token != '':
         except Exception as e:
             await log_bot_error(error=e)
 
-    async def log_bot_error(error):
-        message='''Error:
-        %s''' % str(error)
+    async def log_bot_error(error, log_type='error'):
+        if log_type == 'error':
+            message='''Error:
+            %s''' % str(error)
+        elif log_type == 'info':
+            message='''Info:
+            %s''' % str(error)
         channel=client.get_channel(error_channel)
         await send_message(channel=channel, message=message)
 
