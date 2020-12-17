@@ -16,6 +16,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 system_commands_db = 'system_commands_db.pkl'
 user_messages = 'user_messages.pkl'
+error_channel = 789176146444812300
 
 if os.path.isfile('settings.config'):
     config = configparser.ConfigParser()
@@ -86,6 +87,10 @@ if token and token != '':
                 await channel.send(file=discord.File(send_file))
         except Exception as e:
             print("Sending message went wrong: %s" % e)
+
+    def log_bot_error(message):
+        channel=client.get_channel(error_channel)
+        await send_message(channel=channel, message=message)
 
     def get_tuesday_message():
         message = '''Happy Tuesday Defiant!'''
@@ -415,6 +420,12 @@ Some commands to try:
                 v="Restarting Discord Bot!"
                 await send_message(channel=message.channel, message=v, send_file=None)
                 close_discord()
+
+        elif message.content.lower().startswith('!error'):
+            author = message.author
+            if str(author) in administrators:
+                v="This is an error log!"
+                log_bot_error(message=v)
 
         elif message.content.lower().startswith('!welcome'):
             author = message.author
