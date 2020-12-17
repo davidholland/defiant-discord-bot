@@ -16,7 +16,6 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 system_commands_db = 'system_commands_db.pkl'
 user_messages = 'user_messages.pkl'
-error_channel = 789176146444812300
 
 if os.path.isfile('settings.config'):
     config = configparser.ConfigParser()
@@ -27,6 +26,7 @@ if os.path.isfile('settings.config'):
     administrators = config.get("BOT_SETTINGS", "administrators")
 
     if environment == 'PROD':
+        error_channel = config.get("BOT_SETTINGS", "error_channel")
         wow_channel = config.get("BOT_SETTINGS", 'wow_channel')
         broadcast_channel = config.get("BOT_SETTINGS", 'broadcast_channel')
         test_channel = config.get("BOT_SETTINGS", 'test_channel')
