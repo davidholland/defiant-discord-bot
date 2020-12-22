@@ -120,7 +120,7 @@ Happy Tuesday Defiant!
 __Details for the week of %s/%s/%s__
 ```
 Weekly Renown cap:  %s
-Torghast wings open: %s, %s *(coming soon)*
+Torghast wings open: %s, %s
 ```
 The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,max_renown, wing_1, wing_2)
         except Exception as e:
