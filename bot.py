@@ -50,7 +50,7 @@ Hello!  I just started.
 Logged in as %s
 With UserID %s
         ''' % (client.user.name, str(client.user.id))
-        await log_bot_error(error=log, log_type='info')
+        await bot_logger(message=log, log_type='info')
         print('Logged in as')
         print(client.user.name)
         print(client.user.id)
@@ -60,7 +60,7 @@ With UserID %s
         try:
             exit()
         except Exception as e:
-            log_bot_error(error=e)
+            bot_logger(message=e)
 
 # --------------------- TIMED MESSAGES ---------------------
     #Tuesday morning announcements
@@ -72,13 +72,14 @@ With UserID %s
             tuesday_message = get_tuesday_message()
             while True:
                 now = datetime.datetime.now()
-                if now.weekday() == 1 and now.hour == 18 and now.minute == 17:
+                if now.weekday() == 1 and now.hour == 17 and now.minute == 00:
+                    await bot_logger(message="Tuesday Announce Time", log_type="info")
                     await channel.send(tuesday_message)
                     message_content = get_affixes_message()
                     await channel.send(message_content)
                 await asyncio.sleep(60) # task runs every 60 seconds
         except Exception as e:
-            await log_bot_error(error=e)
+            await bot_logger(message=e)
 
     client.loop.create_task(tuesday_morning_announces())
 
@@ -93,9 +94,9 @@ With UserID %s
             elif send_file and not message:
                 await channel.send(file=discord.File(send_file))
         except Exception as e:
-            await log_bot_error(error=e)
+            await bot_logger(message=e)
 
-    async def log_bot_error(error, log_type='error'):
+    async def bot_logger(message, log_type='error'):
         if log_type == 'error':
             message='''Error:
 %s''' % str(error)
@@ -138,7 +139,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
                 week[day] = week[day] + 1 if day in week else 1
             monday_count = week["Monday"]
         except Exception as e:
-            log_bot_error(error=e)
+            bot_logger(message=e)
         return monday_count
 
 
@@ -151,7 +152,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
             renown={1:3,2:6,3:9,4:12,5:15,6:18,7:22,8:24,9:26,10:28,11:30,12:32,13:34,14:36,15:38,16:40}
             max_renown = renown[week]
         except Exception as e:
-            log_bot_error(error=e)
+            bot_logger(message=e)
         return max_renown
 
     def get_affixes_message():
@@ -174,7 +175,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
                         page_data['affix_details'][3]['name'], page_data['affix_details'][3]['description']
                         )
         except Exception as e:
-            log_bot_error(error=e)
+            bot_logger(message=e)
         return message_content
 
     def get_table(tableName):
@@ -257,7 +258,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 '''
 
         except Exception as e:
-            log_bot_error(error=e)
+            bot_logger(message=e)
             return table
         return table
 
