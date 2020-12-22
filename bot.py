@@ -70,7 +70,6 @@ With UserID %s
         try:
             await client.wait_until_ready()
             channel = client.get_channel(wow_channel)
-            max_renown = get_max_renown()
             tuesday_message = get_tuesday_message()
             while True:
                 now = datetime.datetime.now()
@@ -113,6 +112,7 @@ With UserID %s
         try:
             date_today = datetime.datetime.now()
             max_renown=get_max_renown()
+            wing_1, wing_2= get_torghast_wings()
             message='''**Good Morning!**
 
 Happy Tuesday Defiant!
@@ -448,7 +448,7 @@ Some commands to try:
 
         elif message.content.lower().startswith('!wing'):
             wing_1, wing_2= get_torghast_wings()
-            response = 'Wings open this week are %s and %s' % (wing_1, wing_2)
+            response = 'Wings open this week are %s and %s.' % (wing_1, wing_2)
             await send_message(channel=message.channel, message=response, send_file=None)
 
         elif message.content.lower().startswith('!restart'):
