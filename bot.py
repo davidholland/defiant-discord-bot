@@ -381,7 +381,7 @@ Some commands to try:
             table = get_table("chest")
             await send_message(channel=message.channel, message=table, send_file=None)
 
-        elif message.content.lower().startswith('!leggo') or message.content.lower().startswith('!legendary'):
+        elif message.content.lower().startswith('!leggo') or message.content.lower().startswith('!legendary') or message.content.lower().startswith('!lego'):
             table = get_table("leggo")
             await send_message(channel=message.channel, message=table, send_file=None)
 
