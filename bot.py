@@ -76,6 +76,7 @@ With UserID %s
                     await channel.send(tuesday_message)
                     message_content = get_affixes_message()
                     await channel.send(message_content)
+                    log_bot_error(error="did a cycle")
                 await asyncio.sleep(60) # task runs every 60 seconds
         except Exception as e:
             await log_bot_error(error=e)
