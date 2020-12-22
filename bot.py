@@ -158,7 +158,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
             if y:
                 wing_2 = wing_dict[int(y.group(1))]
         except Exception as e:
-            bot_logger(message=1)
+            bot_logger(message=e)
         return wing_1, wing_2
 
     def get_max_renown():
