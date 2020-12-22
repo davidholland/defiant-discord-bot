@@ -70,6 +70,7 @@ With UserID %s
             channel = client.get_channel(wow_channel)
             max_renown = get_max_renown()
             tuesday_message = get_tuesday_message()
+            log_bot_error(error="outside cycle")
             while not client.is_closed:
                 now = datetime.datetime.now()
                 if now.weekday() == 1 and now.hour == 9 and now.minute == 15:
