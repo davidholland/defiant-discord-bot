@@ -156,8 +156,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
             if x:
                 wing_1 = wing_dict[int(x.group(1))]
             if y:
-                wing_1 = wing_dict[int(y.group(1))]
-
+                wing_2 = wing_dict[int(y.group(1))]
         except Exception as e:
             bot_logger(message=1)
         return wing_1, wing_2
