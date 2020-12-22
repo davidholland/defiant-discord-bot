@@ -294,7 +294,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 
 Some commands to try:
 ```CSS
-!affixes, !logs, !chest, !ash, !soulash, !legendary, !leggo, !vault, !greatvault```
+!affixes, !logs, !chest, !ash, !soulash, !legendary, !lego, !vault, !greatvault, !wings```
                 '''
                 )
 
