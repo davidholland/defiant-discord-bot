@@ -449,7 +449,7 @@ Some commands to try:
 
         elif message.content.lower().startswith('!wing'):
             wing_1, wing_2= get_torghast_wings()
-            response 'Wings open this week are %s and %s' % (wing_1, wing_2)
+            response = 'Wings open this week are %s and %s' % (wing_1, wing_2)
             await send_message(channel=message.channel, message=response, send_file=None)
 
         elif message.content.lower().startswith('!restart'):
