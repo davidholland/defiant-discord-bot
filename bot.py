@@ -99,10 +99,10 @@ With UserID %s
     async def bot_logger(message, log_type='error'):
         if log_type == 'error':
             message='''Error:
-%s''' % str(error)
+%s''' % str(message)
         elif log_type == 'info':
             message='''Info:
-%s''' % str(error)
+%s''' % str(message)
         channel=client.get_channel(error_channel)
         await send_message(channel=channel, message=message)
 
