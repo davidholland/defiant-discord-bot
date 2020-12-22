@@ -10,6 +10,7 @@ import json
 import ast
 import os
 import re
+import bs4 as bs
 
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -40,6 +41,7 @@ if os.path.isfile('settings.config'):
 headers={'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0'}
 affixes_url = "https://raider.io/api/v1/mythic-plus/affixes?region=us"
 buildings_url = "https://wow.gameinfo.io/broken-isles-buildings"
+wowhead_url = "https://wowhead.com"
 
 if token and token != '':
     client = discord.Client()
@@ -108,8 +110,6 @@ With UserID %s
 
     def get_tuesday_message():
         message = '''Happy Tuesday Defiant!'''
-        wing_1 = "Wing One"
-        wing_2 = "Wing Two"
         try:
             date_today = datetime.datetime.now()
             max_renown=get_max_renown()
@@ -142,6 +142,25 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
             bot_logger(message=e)
         return monday_count
 
+    def get_torghast_wings():
+        wing_1 = "Wing One"
+        wing_2 = "Wing Two"
+        wing_dict=({13400: "Skoldus Hall", 13403: "The Fracture Chambers", 13404: "The Soulforges", 13411: "Coldheart Interstitia", 13412: "Mort'regar", 13413: "The Upper Reaches"})
+        try:
+            raw = requests.get(wowhead_url, headers=headers, verify=False)
+            soup = bs.BeautifulSoup(raw.text,'lxml')
+            supa = soup.find('div',attrs={'id' : 'US-group-torghast-wings-line-0'})
+            supb = soup.find('div',attrs={'id' : 'US-group-torghast-wings-line-1'})
+            x = re.search('zone=([0-9]+)', str(supa))
+            y = re.search('zone=([0-9]+)', str(supb))
+            if x:
+                wing_1 = wing_dict(int(x.group(1)))
+            if y:
+                wing_1 = wing_dict(int(y.group(1)))
+
+        except Exception as e:
+            bot_logger(message=1)
+        return wing_1, wing_2
 
     def get_max_renown():
         max_renown = 1
@@ -426,6 +445,11 @@ Some commands to try:
         elif message.content.lower().startswith('!renown'):
             max_renown = get_max_renown()
             response = 'Current Renown Cap: %s' % str(max_renown)
+            await send_message(channel=message.channel, message=response, send_file=None)
+
+        elif message.content.lower().startswith('!wing'):
+            wing_1, wing_2= get_torghast_wings()
+            response 'Wings open this week are %s and %s' % (wing_1, wing_2)
             await send_message(channel=message.channel, message=response, send_file=None)
 
         elif message.content.lower().startswith('!restart'):
