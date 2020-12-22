@@ -70,14 +70,12 @@ With UserID %s
             channel = client.get_channel(wow_channel)
             max_renown = get_max_renown()
             tuesday_message = get_tuesday_message()
-            await log_bot_error(error="outside cycle")
             while True:
                 now = datetime.datetime.now()
-                if now.weekday() == 1 and now.hour == 9 and now.minute == 15:
+                if now.weekday() == 1 and now.hour == 18 and now.minute == 17:
                     await channel.send(tuesday_message)
                     message_content = get_affixes_message()
                     await channel.send(message_content)
-                await log_bot_error(error="did a cycle")
                 await asyncio.sleep(60) # task runs every 60 seconds
         except Exception as e:
             await log_bot_error(error=e)
