@@ -70,10 +70,10 @@ With UserID %s
         try:
             await client.wait_until_ready()
             channel = client.get_channel(wow_channel)
-            tuesday_message = get_tuesday_message()
             while True:
                 now = datetime.datetime.now()
                 if now.weekday() == 1 and now.hour == 17 and now.minute == 00:
+                    tuesday_message = get_tuesday_message()
                     await bot_logger(message="Tuesday Announce Time", log_type="info")
                     await channel.send(tuesday_message)
                     message_content = get_affixes_message()
