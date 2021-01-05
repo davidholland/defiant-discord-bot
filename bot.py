@@ -265,7 +265,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 ```json
    Dungeon               |  +1   |  +2   |  +3
 -------------------------------------------------
-   De Other Side         | 37:00 | 29:36 | 22:12
+   De Other Side         | 41:00 | 32:48 | 24:36
    Halls of Atonement    | 34:00 | 27:12 | 20:24
    Mists of Tirna Scithe | 30:00 | 24:00 | 18:00
    Necrotic Wake         | 32:00 | 25:36 | 19:12
