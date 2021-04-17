@@ -243,6 +243,38 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
     8     |    40     |  570    |  1140```
     '''
 
+            elif tableName in ('valor'):
+                table = '''
+`Valor Points`
+
+                ```apache
+ Cost   |  Item Slot
+---------------------------------------------------
+ 250    |  Offhand, Ring, Cloak, Bracer, Neck
+ 400    |  Trinket, Belt, Shoulders, Gloves, Boots
+ 475    |  Helm, Legs, Chest
+ 500    |  One-Handed DPS Weapon
+ 750    |  One-Handed Int Weapon
+ 1000   |  Two-Handed Weapon
+
+
+ Rank | iLvL
+--------------
+ 1   |  184
+ 2   |  187
+ 3   |  190
+ 4   |  194
+ 5   |  197
+ 6   |  200
+ 7   |  203
+ 8   |  207
+ 9   |  210
+ 10  |  213
+ 11  |  216
+ 12  |  220```
+    '''
+
+
             elif tableName in ('leggo'):
                 table = '''
 `Building your Legendary`
