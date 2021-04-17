@@ -248,7 +248,6 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 `Valor Points`
 
 - Upgrade costs are based on the item slot.  Each rank costs the same amount for that slot regardless of ilvl.
-
                 ```apache
  Cost   |  Item Slots
 ---------------------------------------------------
