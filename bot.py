@@ -247,8 +247,10 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
                 table = '''
 `Valor Points`
 
+- Upgrade costs are based on the item slot.  Each rank costs the same amount for that slot regardless of ilvl.
+
                 ```apache
- Cost   |  Item Slot
+ Cost   |  Item Slots
 ---------------------------------------------------
  250    |  Offhand, Ring, Cloak, Bracer, Neck
  400    |  Trinket, Belt, Shoulders, Gloves, Boots
