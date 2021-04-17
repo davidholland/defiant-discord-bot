@@ -439,6 +439,10 @@ Some commands to try:
             table = get_table("ash")
             await send_message(channel=message.channel, message=table, send_file=None)
 
+        elif message.content.lower().startswith('!valor'):
+            table = get_table("valor")
+            await send_message(channel=message.channel, message=table, send_file=None)            
+
         elif message.content.lower().startswith('!timer'):
             table = get_table("timers")
             await send_message(channel=message.channel, message=table, send_file=None)
