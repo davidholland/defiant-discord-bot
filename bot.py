@@ -538,6 +538,9 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
                 v="Restarting Discord Bot!"
                 await send_message(channel=message.channel, message=v, send_file=None)
                 close_discord()
+            else:
+                v = "Nope!"
+                await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!welcome'):
             author = message.author
