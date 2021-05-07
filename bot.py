@@ -428,12 +428,13 @@ Some commands to try:
 
 ############# START SYSTEM ROLES
         elif message.content.lower().startswith('!roles'):
-            v = '''
-** Usage **
+            v = '''Role Management
+
+**-- Usage -- **
 !role add roleName
 !role remove roleName
 
-** Current Roles Available **
+**-- Current Roles Available -- **
 lfg - Adds you to the wow-lfg channel if you are interested in notifications when people are looking to do stuff!
             '''
             await send_message(channel=message.channel, message=v, send_file=None)
