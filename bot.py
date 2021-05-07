@@ -430,7 +430,9 @@ Some commands to try:
 
         elif message.content.lower().startswith('!role'):
             content = message.content.lower()
+            member = message.author
             role = False
+            role_id = False
             action = "add"
             v = "Role not found!"
             if "add" in content:
@@ -439,15 +441,16 @@ Some commands to try:
                 action = "remove"
             if "lfg" in content:
                 role_name = "WoW LFG"
-                role = get(message.server.roles, name=role_name)
+                role_id = 840351027127517195
+                role = discord.utils.get(member.guild.roles, id=role_id)
 
             if role:
                 if action == "add":
                     v = "Adding the role %s" % role_name
-                    await client.add_roles(message.author, role)
+                    await member.add_roles(message.author, role)
                 elif action == "remove":
                     v = "Removing the role %s" % role_name
-                    await client.remove_roles(message.author, role)
+                    await member.remove_roles(message.author, role)
                 await send_message(channel=message.channel, message=v, send_file=None)
             else:
                 await send_message(channel=message.channel, message=v, send_file=None)
