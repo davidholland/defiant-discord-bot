@@ -457,10 +457,10 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
 
             if role:
                 if action == "add":
-                    v = "Adding the role %s to %s!" % (role_name, str(member))
+                    v = "Adding the role [%s] to %s!" % (role_name, str(member))
                     await member.add_roles(role)
                 elif action == "remove":
-                    v = "Removing the role %s to %s!" % (role_name, str(member))
+                    v = "Removing the role [%s] to %s!" % (role_name, str(member))
                     await member.remove_roles(role)
                 await send_message(channel=message.channel, message=v, send_file=None)
             else:
