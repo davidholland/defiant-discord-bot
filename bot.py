@@ -427,6 +427,16 @@ Some commands to try:
 ############# END USER SPECIFIC / FUN REACTIONS
 
 ############# START SYSTEM ROLES
+        elif message.content.lower().startswith('!roles'):
+            message = '''
+** Usage **
+!role add roleName
+!role remove roleName
+
+** Current Roles Available **
+lfg - Adds you to the wow-lfg channel if you are interested in notifications when people are looking to do stuff!
+            '''
+            await send_message(channel=message.channel, message=table, send_file=None)
 
         elif message.content.lower().startswith('!role'):
             content = message.content.lower()
@@ -476,6 +486,7 @@ Some commands to try:
         elif message.content.lower().startswith('!valor'):
             table = get_table("valor")
             await send_message(channel=message.channel, message=table, send_file=None)
+
 
         elif message.content.lower().startswith('!timer'):
             table = get_table("timers")
