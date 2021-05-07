@@ -442,15 +442,16 @@ Some commands to try:
             if "lfg" in content:
                 role_name = "WoW LFG"
                 role_id = 840351027127517195
-                role = discord.utils.get(member.guild.roles, id=role_id)
+            if role_id:
+                role = discord.utils.get(message.guild.roles, id=role_id)
 
             if role:
                 if action == "add":
-                    v = "Adding the role %s" % role_name
-                    await member.add_roles(message.author, role)
+                    v = "Adding the role %s!" % role_name
+                    await member.add_roles(role)
                 elif action == "remove":
-                    v = "Removing the role %s" % role_name
-                    await member.remove_roles(message.author, role)
+                    v = "Removing the role %s!" % role_name
+                    await member.remove_roles(role)
                 await send_message(channel=message.channel, message=v, send_file=None)
             else:
                 await send_message(channel=message.channel, message=v, send_file=None)
