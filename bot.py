@@ -426,6 +426,35 @@ Some commands to try:
 
 ############# END USER SPECIFIC / FUN REACTIONS
 
+############# START SYSTEM ROLES
+
+        elif message.content.lower().startswith('!role'):
+            content = message.content.lower()
+            role = False
+            action = "add"
+            v = "Role not found!"
+            if "add" in content:
+                pass
+            if "remove" in content:
+                action = "remove"
+            if "lfg" in content:
+                role_name = "WoW LFG"
+                role = get(message.server.roles, name=role_name)
+
+            if role:
+                if action == "add":
+                    v = "Adding the role %s" % role_name
+                    await client.add_roles(message.author, role)
+                elif action == "remove":
+                    v = "Removing the role %s" % role_name
+                    await client.remove_roles(message.author, role)
+                await send_message(channel=message.channel, message=v, send_file=None)
+            else:
+                await send_message(channel=message.channel, message=v, send_file=None)
+
+############# END SYSTEM ROLES
+
+
 ############# START SYSTEM REACTIONS
 
         elif message.content.lower().startswith('!chest') or message.content.lower().startswith('!titan') or message.content.lower().startswith('!resid') or message.content.lower().startswith('!mythic'):
@@ -442,7 +471,7 @@ Some commands to try:
 
         elif message.content.lower().startswith('!valor'):
             table = get_table("valor")
-            await send_message(channel=message.channel, message=table, send_file=None)            
+            await send_message(channel=message.channel, message=table, send_file=None)
 
         elif message.content.lower().startswith('!timer'):
             table = get_table("timers")
