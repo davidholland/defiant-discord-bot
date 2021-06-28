@@ -365,7 +365,7 @@ Some commands to try:
 %s
 ```
 ''' % (str(command_list))
-            await message.channel.send( v)
+            await message.channel.send(v)
 
 ############# START USER SPECIFIC / FUN REACTIONS
 
