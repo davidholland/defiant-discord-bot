@@ -363,7 +363,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 Some commands to try:
 ```CSS
 %s
-                ''' % (str(command_list))
+```            ''' % (str(command_list))
                 )
 
 ############# START USER SPECIFIC / FUN REACTIONS
