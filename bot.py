@@ -226,7 +226,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
                 table = '''
 `Torghast (Updated for 9.1)`
 - Each Layer in Torghast is 6 levels and different wings are open each week.
-- NEW IN 9.1 - You can re-clear to farm ash. Try !farmash to see that chart. Soul Cinders are only earned once a week.
+- NEW IN 9.1 - You can re-clear to farm ash. Try `!farmash` to see that chart. Soul Cinders are only earned once a week.
 - Running the highest Layer you have unlocked awards all Soul Ash and Cinders for layers below it.
                 ```apache
   Layer   | Ash + Cinders |    Total   |  Weekly
