@@ -202,7 +202,6 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
             if tableName in ('chest', 'titan', 'mythic'):
                 table = '''
 `Mythic+ (Updated for 9.1)`
-
 - Gear you will get per keystone level, and in your Great Vault after Tuesday reset.
 ```apache
   Key | iLvL End  | iLvL Vault
@@ -226,7 +225,6 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
             elif tableName in ('ash'):
                 table = '''
 `Torghast (Updated for 9.1)`
-
 - Each Layer in Torghast is 6 levels and different wings are open each week.
 - NEW IN 9.1 - You can re-clear to farm ash. Try !farmash to see that chart. Soul Cinders are only earned once a week.
 - Running the highest Layer you have unlocked awards all Soul Ash and Cinders for layers below it.
@@ -251,9 +249,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
             elif tableName in ('farmash'):
                 table = '''
 `Torghast Re-Clear (Updated for 9.1)`
-
 - You will get this exact amount for the clear, and will not get the layers below it.
-
                 ```apache
   Layer   | Ash
 -----------------
@@ -317,9 +313,9 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
     2     |  210   |  2000 |  750
     3     |  225   |  3200 |  1200
     4     |  235   |  5150 |  1950
-
+```
 - No additional ash is needed to upgrade from 4, only cinders. Ash + Cinders is the total cost if building from scratch.
-
+ ```apache
   Rank    |  iLvL  |  Ash + Cinders |  Upgrade Cost
 ----------------------------------------------------
     5     |  190   |  5150 + 400    |  0 + 400
