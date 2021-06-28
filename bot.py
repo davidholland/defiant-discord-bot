@@ -359,8 +359,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
             command_list.sort()
             v = '''
 `Help Menu`
-
-Some commands to try: `%s`
+**Some commands to try:** `%s`
             ''' % ('`, `'.join(command_list))
             await message.channel.send(v)
 
