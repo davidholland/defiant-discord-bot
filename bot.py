@@ -119,7 +119,7 @@ Happy Tuesday Defiant!
 
 __Details for the week of %s/%s/%s__
 ```
-Weekly Renown cap:  %s
+Weekly Renown cap:  %s (Needs Updated for 9.1.  Eodred waiting for info to be available)
 Torghast wings open: %s, %s
 ```
 The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,max_renown, wing_1, wing_2)
@@ -129,7 +129,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
         return message
 
 
-    def calculate_weeks_since(start="11/22/2020"): #Default to start of expansion
+    def calculate_weeks_since(start="06/22/2021"): #Default to start of expansion
         try:
             start_date  = datetime.datetime.strptime(start, '%m/%d/%Y')
             end_date    = datetime.datetime.today()
@@ -201,51 +201,79 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
         try:
             if tableName in ('chest', 'titan', 'mythic'):
                 table = '''
-`Mythic +`
+`Mythic+ (Updated for 9.1)`
 
 - Gear you will get per keystone level, and in your Great Vault after Tuesday reset.
 ```apache
   Key | iLvL End  | iLvL Vault
 --------------------------------
-   2  |    187    |    200
-   3  |    190    |    203
-   4  |    194    |    207
-   5  |    194    |    210
-   6  |    197    |    210
-   7  |    200    |    213
-   8  |    200    |    216
-   9  |    200    |    216
-   10 |    203    |    220
-   11 |    203    |    220
-   12 |    207    |    223
-   13 |    207    |    223
-   14 |    207    |    226
-   15 |    210    |    226 ```
+   2  |    210    |    226
+   3  |    213    |    226
+   4  |    216    |    226
+   5  |    220    |    229
+   6  |    223    |    229
+   7  |    223    |    233
+   8  |    226    |    236
+   9  |    226    |    236
+   10 |    229    |    239
+   11 |    229    |    242
+   12 |    233    |    246
+   13 |    233    |    246
+   14 |    236    |    249
+   15 |    239    |    252 ```
                 '''
 
             elif tableName in ('ash'):
                 table = '''
-`Torghast`
+`Torghast (Updated for 9.1)`
 
-- Each Layer in Torghast is 6 levels and wings are open each week.
-- You can only get the Ash from each wing/layer once per week.
-- Running the highest Layer you have unlocked awards all Soul Ash for layers below it. Skipping right to layer 8 awards the full 570 Soul Ash.
+- Each Layer in Torghast is 6 levels and different wings are open each week.
+- NEW IN 9.1 - You can re-clear to farm ash. Try !farmash to see that chart. Soul Cinders are only earned once a week.
+- Running the highest Layer you have unlocked awards all Soul Ash and Cinders for layers below it.
                 ```apache
-  Layer   | Soul Ash  |  Total  |  Weekly Cap
-----------------------------------------------
-    1     |    120    |  120    |  240
-    2     |    100    |  220    |  440
-    3     |    85     |  305    |  610
-    4     |    70     |  375    |  750
-    5     |    60     |  435    |  870
-    6     |    50     |  485    |  970
-    7     |    45     |  530    |  1060
-    8     |    40     |  570    |  1140```
+  Layer   | Ash + Cinders |    Total   |  Weekly
+----------------------------------------------------
+    1     |    180 + 0    | 180  + 0  |  360  + 0
+    2     |    150 + 0    | 330  + 0  |  660  + 0
+    3     |    130 + 0    | 460  + 0  |  920  + 0
+    4     |    105 + 0    | 565  + 0  |  1130 + 0
+    5     |    90  + 0    | 655  + 0  |  1310 + 0
+    6     |    75  + 0    | 730  + 0  |  1460 + 0
+    7     |    70  + 0    | 800  + 0  |  1600 + 0
+    8     |    60  + 0    | 860  + 0  |  1720 + 0
+    9     |    55  + 60   | 915  + 60 |  1830 + 120
+    10    |    45  + 50   | 960  + 110|  1920 + 220
+    11    |    40  + 40   | 1000 + 150|  2000 + 300
+    12    |    30  + 30   | 1030 + 180|  2060 + 360
+    ```
     '''
 
+            elif tableName in ('farmash'):
+                table = '''
+`Torghast Re-Clear (Updated for 9.1)`
+
+- You will get this exact amount for the clear, and will not get the layers below it.
+
+                ```apache
+  Layer   | Ash
+-----------------
+    1     | 36
+    2     | 66
+    3     | 92
+    4     | 113
+    5     | 131
+    6     | 146
+    7     | 160
+    8     | 172
+    9     | 183
+    10    | 192
+    11    | 200
+    12    | 206
+    ```
+    '''
             elif tableName in ('valor'):
                 table = '''
-`Valor Points`
+`Valor Points (Updated for 9.1)`
 
 - Upgrade costs are based on the item slot.  Each rank costs the same amount for that slot regardless of ilvl.
                 ```apache
@@ -259,26 +287,27 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
  1000   |  Two-Handed Weapon
 
 
- Rank | iLvL
---------------
- 1   |  184
- 2   |  187
- 3   |  190
- 4   |  194
- 5   |  197
- 6   |  200
- 7   |  203
- 8   |  207
- 9   |  210
- 10  |  213
- 11  |  216
- 12  |  220```
+ Rank | iLvL | Rating Required
+------------------------------
+ 1   |  210  | None
+ 2   |  213  | None
+ 3   |  216  | None
+ 4   |  220  | None
+ 5   |  223  | None
+ 6   |  226  | None
+ 7   |  229  | 750
+ 8   |  233  | 750
+ 9   |  236  | 1500
+ 10  |  239  | 1500
+ 11  |  242  | 2000
+ 12  |  246  | 2000
+ ```
     '''
 
 
             elif tableName in ('leggo'):
                 table = '''
-`Building your Legendary`
+`Building your Legendary (Updated for 9.1)`
 
 - You can skip ranks when building, or upgrade from the previous rank.  Soul Ash costs are the same either way.
                 ```apache
@@ -288,6 +317,14 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
     2     |  210   |  2000 |  750
     3     |  225   |  3200 |  1200
     4     |  235   |  5150 |  1950
+
+- No additional ash is needed to upgrade from 4, only cinders. Ash + Cinders is the total cost if building from scratch.
+
+  Rank    |  iLvL  |  Ash + Cinders |  Upgrade Cost
+----------------------------------------------------
+    5     |  190   |  5150 + 400    |  0 + 400
+    6     |  210   |  5150 + 1650   |  0 + 1250
+
 ```
 '''
             elif tableName in ('timers'):
@@ -480,7 +517,7 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
             table = get_table("leggo")
             await send_message(channel=message.channel, message=table, send_file=None)
 
-        elif message.content.lower().startswith('!ash') or message.content.lower().startswith('!soulash'):
+        elif message.content.lower().startswith('!ash') or message.content.lower().startswith('!soulash') or message.content.lower().startswith('!cinder'):
             table = get_table("ash")
             await send_message(channel=message.channel, message=table, send_file=None)
 
@@ -488,6 +525,9 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
             table = get_table("valor")
             await send_message(channel=message.channel, message=table, send_file=None)
 
+        elif message.content.lower().startswith('!farmash'):
+            table = get_table("farmash")
+            await send_message(channel=message.channel, message=table, send_file=None)
 
         elif message.content.lower().startswith('!timer'):
             table = get_table("timers")
