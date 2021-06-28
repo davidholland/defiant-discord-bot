@@ -355,13 +355,15 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 
 
         if message.content.lower().startswith('!help'):
+            command_list = ('!affixes','!ash', '!soulash', '!cinder', '!vault', '!greatvault', '!chest', '!leggo', '!legendary', '!valor', '!logs', '!wings')
+            command_list.sort()
             await message.channel.send('''
                 `Help Menu`
 
 Some commands to try:
 ```CSS
-!affixes, !logs, !chest, !ash, !soulash, !legendary, !lego, !vault, !greatvault, !wings```
-                '''
+%s
+                ''' % (command_list)
                 )
 
 ############# START USER SPECIFIC / FUN REACTIONS
