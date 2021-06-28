@@ -362,9 +362,9 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 
 Some commands to try:
 ```CSS
-%s
+commands:%s
 ```
-''' % (str(command_list))
+''' % (', '.join(command_list))
             await message.channel.send(v)
 
 ############# START USER SPECIFIC / FUN REACTIONS
