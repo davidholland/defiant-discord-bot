@@ -358,13 +358,13 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
             command_list = ('!affixes','!ash', '!soulash', '!cinder', '!vault', '!greatvault', '!chest', '!leggo', '!legendary', '!valor', '!logs', '!wings')
             command_list.sort()
             v = '''
-`Help Menu`
+            `Help Menu`
 
-Some commands to try:
-```CSS
-commands:%s
-```
-''' % (', '.join(command_list))
+            Some commands to try:
+            ```CSS
+            commands: %s
+            ```
+            ''' % (', '.join(command_list))
             await message.channel.send(v)
 
 ############# START USER SPECIFIC / FUN REACTIONS
