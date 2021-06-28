@@ -355,7 +355,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 
 
         if message.content.lower().startswith('!help'):
-            command_list = ('!affixes','!ash', '!soulash', '!cinder', '!vault', '!greatvault', '!chest', '!leggo', '!legendary', '!valor', '!logs', '!wings')
+            command_list = ['!affixes','!ash', '!soulash', '!cinder', '!vault', '!greatvault', '!chest', '!leggo', '!legendary', '!valor', '!logs', '!wings']
             command_list.sort()
             v = '''
             `Help Menu`
