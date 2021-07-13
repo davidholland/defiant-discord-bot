@@ -72,7 +72,7 @@ With UserID %s
             channel = client.get_channel(wow_channel)
             while True:
                 now = datetime.datetime.now()
-                if now.weekday() == 1 and now.hour == 17 and now.minute == 00:
+                if now.weekday() == 1 and now.hour == 19 and now.minute == 00:
                     tuesday_message = get_tuesday_message()
                     await bot_logger(message="Tuesday Announce Time", log_type="info")
                     await channel.send(tuesday_message)
