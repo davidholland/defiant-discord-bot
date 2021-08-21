@@ -318,8 +318,8 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
  ```apache
   Rank    |  iLvL  |  Ash + Cinders |  Upgrade Cost
 ----------------------------------------------------
-    5     |  249   |  5150 + 400    |  0 + 400
-    6     |  262   |  5150 + 1650   |  0 + 1250
+    5     |  249   |  5150 + 1100    |  0 + 1100
+    6     |  262   |  5150 + 1650    |  0 + 550
 
 ```
 '''
