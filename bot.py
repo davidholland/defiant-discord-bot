@@ -165,9 +165,9 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
         max_renown = 1
         try:
             week = int(calculate_weeks_since())
-            if week > 16:
-                week=16
-            renown={1:42,2:45,3:48,4:51,5:54,6:57,7:60,8:63,9:66,10:69,11:72,12:75,13:78,14:80}
+            if week > 17:
+                week=17
+            renown={1:42,2:45,3:48,4:51,5:54,6:57,7:60,8:63,9:66,10:69,11:68,12:70,13:72,14:74,15:76,16:78,17:80}
             max_renown = renown[week]
         except Exception as e:
             bot_logger(message=e)
