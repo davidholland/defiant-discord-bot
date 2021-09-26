@@ -585,11 +585,11 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
 ***Welcome to Defiant! We are glad that you are here!***
 Before you click into the rest of the Discord here is some background on Defiant and some guidelines that help us remain a positive place for people to be and to hang out.
 **About**
-Defiant is a group of friends and family. In `WoW` we are on the server(s) `Doomhammer / Baelgun` playing since the days of Vanilla WoW.  In `New World` we are on the `NA East` server `Morrow` We are primarily adults and come from all walks of life.  Our core principle is putting people first.  We Raid, M+, PvP and quest together, but more importantly, become friends.  Community leadership is made up of a council  who make decisions with the input from our officers and members.
+Defiant is a group of friends and family. In `WoW` on server(s)  `Doomhammer / Baelgun` playing since the days of Vanilla.  In `New World` on the `NA East` server `Morrow` We are primarily adults and come from all walks of life.  Our core principle is putting people first.  We Raid, M+, PvP and quest together, but more importantly, become friends.  Community leadership is made up of a council who make decisions with the input from our officers and members.
 **Success**
 During WoW Raiding - Defiant consistently achieves the “Ahead of the Curve” achievement. We are not “hard-core” raiders, but we are serious about doing well and experiencing the content to the fullest. Consequently, we do not officially raid on mythic difficulty, as mythic raiding tends to require a more hard-core mindset and management style. As a Community we succeed by putting friendships and real life before video games, and treating each other with respect.
 **Formula**
-There are a few key principles that have enabled such a longstanding and enjoyable community culture.
+Key principles that have enabled such a longstanding and enjoyable community culture:
 - We are a decidedly no-drama community. Keeping this in mind maintains a respectful and fun atmosphere.
 - We respect and encourage different play-styles and intensities.
 - Games are just games. Real life (RL) takes precedence in all situations.
