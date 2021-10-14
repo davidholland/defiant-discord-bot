@@ -589,7 +589,7 @@ Before you click into the rest of the Discord here is some background on Defiant
 Defiant is a group of friends and family.
 
 `WoW` - `Doomhammer / Baelgun` 
-`New World` - `NA East - Morrow`
+`New World` - `NA East - Nunne Chaha`
 
 We are primarily adults and come from all walks of life.  Our core principle is putting people first.  We Raid, M+, PvP and quest together, but more importantly, become friends.  Community leadership is made up of a council who make decisions with the input from our officers and members.
 
