@@ -201,7 +201,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
         try:
             if tableName in ('chest', 'titan', 'mythic'):
                 table = '''
-`Mythic+ (Updated for 9.1)`
+`Mythic+ (Updated for 9.2)`
 - Gear you will get per keystone level, and in your Great Vault after Tuesday reset.
 ```apache
   Key | iLvL End  | iLvL Vault
@@ -224,7 +224,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 
             elif tableName in ('ash'):
                 table = '''
-`Torghast (Updated for 9.1)`
+`Torghast (Updated for 9.2)`
 - Each Layer in Torghast is 6 levels and different wings are open each week.
 - NEW IN 9.1 - You can re-clear to farm ash. Try `!farmash` to see that chart. Soul Cinders are only earned once a week.
 - Running the highest Layer you have unlocked awards all Soul Ash and Cinders for layers below it.
@@ -248,7 +248,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 
             elif tableName in ('farmash'):
                 table = '''
-`Torghast Re-Clear (Updated for 9.1)`
+`Torghast Re-Clear (Updated for 9.2)`
 - You will get this exact amount for the clear, and will not get the layers below it.
                 ```apache
   Layer   | Ash
@@ -269,7 +269,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
     '''
             elif tableName in ('valor'):
                 table = '''
-`Valor Points (Updated for 9.1)`
+`Valor Points (Updated for 9.2)`
 
 - Upgrade costs are based on the item slot.  Each rank costs the same amount for that slot regardless of ilvl.
                 ```apache
@@ -303,7 +303,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 
             elif tableName in ('leggo'):
                 table = '''
-`Building your Legendary (Updated for 9.1)`
+`Building your Legendary (Updated for 9.2)`
 
 - You can skip ranks when building, or upgrade from the previous rank.  Soul Ash costs are the same either way.
                 ```apache
@@ -320,6 +320,12 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 ----------------------------------------------------
     5     |  249   |  5150 + 1100    |  0 + 1100
     6     |  262   |  5150 + 1650    |  0 + 550
+```
+- New in 9.2
+``` apache
+  Rank    |  iLvL  |  Cosmic Flux 
+----------------------------------
+    7     |  291   |     2000     
 
 ```
 '''
