@@ -322,7 +322,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
     6     |  262   |  5150 + 1650    |  0 + 550
 ```
 - New in 9.2
-``` apache
+```apache
   Rank    |  iLvL  |  Cosmic Flux 
 ----------------------------------
     7     |  291   |     2000     
