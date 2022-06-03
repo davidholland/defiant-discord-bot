@@ -11,6 +11,7 @@ import ast
 import os
 import re
 import bs4 as bs
+import dadjoke
 
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -430,6 +431,10 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
             d = { 1 : '''Hey it's Mosh.... Shyrene!!''', 2 : '''Steal some of Lonsham's luck for us already''' }
             k, v = random.choice(list(d.items()))
             await send_message(channel=message.channel, message=v, send_file=None)
+            
+        elif message.content.lower().startswith('!dadjoke'):
+            joke = dadjokes.Dadjoke()
+            await send_message(channel=message.channel, message=joke.joke, send_file=None)
 
         elif message.content.lower().startswith('!darj'):
             d = { 1 : '''He's got moon''', 2 : '''10 minute break?  Sweet.  Be back in 20.''' }
