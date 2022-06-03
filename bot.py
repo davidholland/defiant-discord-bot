@@ -11,7 +11,7 @@ import ast
 import os
 import re
 import bs4 as bs
-import dadjoke
+import dadjokes
 
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
