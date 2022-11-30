@@ -112,67 +112,20 @@ With UserID %s
         message = '''Happy Tuesday Defiant!'''
         try:
             date_today = datetime.datetime.now()
-            max_renown=get_max_renown()
-            wing_1, wing_2= get_torghast_wings()
             message='''**Good Morning!**
 
 Happy Tuesday Defiant!
 
 __Details for the week of %s/%s/%s__
 ```
-Weekly Renown cap:  %s
-Torghast wings open: %s, %s
+
 ```
-The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,max_renown, wing_1, wing_2)
+The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year)
         except Exception as e:
             print("A thing broke: %s" % e)
             return message
         return message
 
-
-    def calculate_weeks_since(start="06/22/2021"): #Default to start of expansion
-        try:
-            start_date  = datetime.datetime.strptime(start, '%m/%d/%Y')
-            end_date    = datetime.datetime.today()
-            week        = {}
-            for i in range((end_date - start_date).days):
-                day       = calendar.day_name[(start_date + datetime.timedelta(days=i+1)).weekday()]
-                week[day] = week[day] + 1 if day in week else 1
-            monday_count = week["Monday"]
-        except Exception as e:
-            bot_logger(message=e)
-        return monday_count
-
-    def get_torghast_wings():
-        wing_1 = "Wing One"
-        wing_2 = "Wing Two"
-        wing_dict=({13400: "Skoldus Hall", 13403: "The Fracture Chambers", 13404: "The Soulforges", 13411: "Coldheart Interstitia", 13412: "Mort'regar", 13413: "The Upper Reaches"})
-        try:
-            raw = requests.get(wowhead_url, headers=headers, verify=False)
-            soup = bs.BeautifulSoup(raw.text,'lxml')
-            supa = soup.find('div',attrs={'id' : 'US-group-torghast-wings-line-0'})
-            supb = soup.find('div',attrs={'id' : 'US-group-torghast-wings-line-1'})
-            x = re.search('zone=([0-9]+)', str(supa))
-            y = re.search('zone=([0-9]+)', str(supb))
-            if x:
-                wing_1 = wing_dict[int(x.group(1))]
-            if y:
-                wing_2 = wing_dict[int(y.group(1))]
-        except Exception as e:
-            bot_logger(message=e)
-        return wing_1, wing_2
-
-    def get_max_renown():
-        max_renown = 1
-        try:
-            week = int(calculate_weeks_since())
-            if week > 17:
-                week=17
-            renown={1:42,2:45,3:48,4:51,5:54,6:57,7:60,8:63,9:66,10:69,11:68,12:70,13:72,14:74,15:76,16:78,17:80}
-            max_renown = renown[week]
-        except Exception as e:
-            bot_logger(message=e)
-        return max_renown
 
     def get_affixes_message():
         message_content = 'Something went wrong'
@@ -202,134 +155,34 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
         try:
             if tableName in ('chest', 'titan', 'mythic'):
                 table = '''
-`Mythic+ (Updated for 9.2)`
+`Mythic+ (Updated for 10.0.2)`
 - Gear you will get per keystone level, and in your Great Vault after Tuesday reset.
 ```apache
   Key | iLvL End  | iLvL Vault
 --------------------------------
-   2  |    236    |    252
-   3  |    239    |    252
-   4  |    242    |    252
-   5  |    246    |    255
-   6  |    249    |    255
-   7  |    249    |    259
-   8  |    252    |    262
-   9  |    252    |    262
-   10 |    255    |    265
-   11 |    255    |    268
-   12 |    259    |    272
-   13 |    259    |    272
-   14 |    262    |    275
-   15 |    262    |    278 ```
+   1  |    372    |    ---
+   2  |    376    |    382
+   3  |    376    |    385
+   4  |    379    |    385
+   5  |    379    |    389
+   6  |    382    |    389
+   7  |    385    |    392
+   8  |    385    |    395
+   9  |    389    |    395
+   10 |    392    |    398
+   11 |    392    |    402
+   12 |    392    |    405
+   13 |    392    |    408
+   14 |    395    |    408
+   15 |    398    |    411
+   16 |    398    |    415
+   17 |    402    |    415
+   18 |    402    |    418
+   19 |    405    |    418
+   20 |    405    |    421
+   ```
                 '''
 
-            elif tableName in ('ash'):
-                table = '''
-`Torghast (Updated for 9.2)`
-- Each Layer in Torghast is 6 levels and different wings are open each week.
-- NEW IN 9.1 - You can re-clear to farm ash. Try `!farmash` to see that chart. Soul Cinders are only earned once a week.
-- Running the highest Layer you have unlocked awards all Soul Ash and Cinders for layers below it.
-                ```apache
-  Layer   | Ash + Cinders |    Total   |  Weekly
-----------------------------------------------------
-    1     |    180 + 0    | 180  + 0  |  360  + 0
-    2     |    150 + 0    | 330  + 0  |  660  + 0
-    3     |    130 + 0    | 460  + 0  |  920  + 0
-    4     |    105 + 0    | 565  + 0  |  1130 + 0
-    5     |    90  + 0    | 655  + 0  |  1310 + 0
-    6     |    75  + 0    | 730  + 0  |  1460 + 0
-    7     |    70  + 0    | 800  + 0  |  1600 + 0
-    8     |    60  + 0    | 860  + 0  |  1720 + 0
-    9     |    55  + 60   | 915  + 60 |  1830 + 120
-    10    |    45  + 50   | 960  + 110|  1920 + 220
-    11    |    40  + 40   | 1000 + 150|  2000 + 300
-    12    |    30  + 30   | 1030 + 180|  2060 + 360
-    ```
-    '''
-
-            elif tableName in ('farmash'):
-                table = '''
-`Torghast Re-Clear (Updated for 9.2)`
-- You will get this exact amount for the clear, and will not get the layers below it.
-                ```apache
-  Layer   | Ash
------------------
-    1     | 36
-    2     | 66
-    3     | 92
-    4     | 113
-    5     | 131
-    6     | 146
-    7     | 160
-    8     | 172
-    9     | 183
-    10    | 192
-    11    | 200
-    12    | 206
-    ```
-    '''
-            elif tableName in ('valor'):
-                table = '''
-`Valor Points (Updated for 9.2)`
-
-- Upgrade costs are based on the item slot.  Each rank costs the same amount for that slot regardless of ilvl.
-                ```apache
- Cost   |  Item Slots
----------------------------------------------------
- 250    |  Offhand, Ring, Cloak, Bracer, Neck
- 400    |  Trinket, Belt, Shoulders, Gloves, Boots
- 475    |  Helm, Legs, Chest
- 500    |  One-Handed DPS Weapon
- 750    |  One-Handed Int Weapon
- 1000   |  Two-Handed Weapon
-
-
- Rank | iLvL | Rating Required
-------------------------------
- 1   |  210  | None
- 2   |  213  | None
- 3   |  216  | None
- 4   |  220  | None
- 5   |  223  | None
- 6   |  226  | None
- 7   |  229  | 750
- 8   |  233  | 750
- 9   |  236  | 1500
- 10  |  239  | 1500
- 11  |  242  | 2000
- 12  |  246  | 2000
- ```
-    '''
-
-
-            elif tableName in ('leggo'):
-                table = '''
-`Building your Legendary (Updated for 9.2)`
-
-- You can skip ranks when building, or upgrade from the previous rank.  Soul Ash costs are the same either way.
-                ```apache
-  Rank    |  iLvL  |  Ash  |  Upgrade Cost
---------------------------------------------
-    1     |  190   |  1250 |  -
-    2     |  210   |  2000 |  750
-    3     |  225   |  3200 |  1200
-    4     |  235   |  5150 |  1950
-```
-- No additional ash is needed to upgrade from 4, only cinders. Ash + Cinders is the total cost if building from scratch.
- ```apache
-  Rank    |  iLvL  |  Ash + Cinders |  Upgrade Cost
-----------------------------------------------------
-    5     |  249   |  5150 + 1100    |  0 + 1100
-    6     |  262   |  5150 + 1650    |  0 + 550
-```
-- New in 9.2
-```apache
-  Rank    |  iLvL  |  Cosmic Flux 
-----------------------------------
-    7     |  291   |     2000     
-
-```
-'''
             elif tableName in ('timers'):
                 table = '''
 `Mythic + Timers`
@@ -362,7 +215,7 @@ The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year,ma
 
 
         if message.content.lower().startswith('!help'):
-            command_list = ['!affixes','!ash', '!soulash', '!cinder', '!vault', '!greatvault', '!chest', '!leggo', '!legendary', '!valor', '!logs', '!wings']
+            command_list = ['!affixes','!vault', '!greatvault', '!chest', '!logs']
             command_list.sort()
             v = '''
 `Help Menu`
@@ -519,22 +372,6 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
             table = get_table("chest")
             await send_message(channel=message.channel, message=table, send_file=None)
 
-        elif message.content.lower().startswith('!leggo') or message.content.lower().startswith('!legendary') or message.content.lower().startswith('!lego'):
-            table = get_table("leggo")
-            await send_message(channel=message.channel, message=table, send_file=None)
-
-        elif message.content.lower().startswith('!ash') or message.content.lower().startswith('!soulash') or message.content.lower().startswith('!cinder'):
-            table = get_table("ash")
-            await send_message(channel=message.channel, message=table, send_file=None)
-
-        elif message.content.lower().startswith('!valor'):
-            table = get_table("valor")
-            await send_message(channel=message.channel, message=table, send_file=None)
-
-        elif message.content.lower().startswith('!farmash'):
-            table = get_table("farmash")
-            await send_message(channel=message.channel, message=table, send_file=None)
-
         elif message.content.lower().startswith('!timer'):
             table = get_table("timers")
             await send_message(channel=message.channel, message=table, send_file=None)
@@ -553,7 +390,6 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
             await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!tuesday'):
-            max_renown = get_max_renown()
             tuesday_message = get_tuesday_message()
             await send_message(channel=message.channel, message=tuesday_message, send_file=None)
             message_content = get_affixes_message()
@@ -568,16 +404,6 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
 
         elif message.content.lower().startswith('!vault') or message.content.lower().startswith('!greatvault') or message.content.lower().startswith('!gv'):
             await send_message(channel=message.channel, message=None, send_file='gv.png')
-
-        elif message.content.lower().startswith('!renown'):
-            max_renown = get_max_renown()
-            response = 'Current Renown Cap: %s' % str(max_renown)
-            await send_message(channel=message.channel, message=response, send_file=None)
-
-        elif message.content.lower().startswith('!wing'):
-            wing_1, wing_2= get_torghast_wings()
-            response = 'Wings open this week are %s and %s.' % (wing_1, wing_2)
-            await send_message(channel=message.channel, message=response, send_file=None)
 
         elif message.content.lower().startswith('!restart'):
             author = message.author
