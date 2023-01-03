@@ -112,7 +112,7 @@ With UserID %s
         message = '''Happy Tuesday Defiant!'''
         try:
             date_today = datetime.datetime.now()
-            message='''**Good Morning!**
+            message='''**Hello!**
 
 Happy Tuesday Defiant.  
             
