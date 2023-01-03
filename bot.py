@@ -113,7 +113,10 @@ With UserID %s
         try:
             date_today = datetime.datetime.now()
             message='''**Good Morning!**
-            Happy Tuesday Defiant.  For the week of %s/%s/%s the M+ affixes are...''' % (date_today.month, date_today.day, date_today.year)
+
+Happy Tuesday Defiant.  
+            
+For the week of %s/%s/%s the M+ affixes are...''' % (date_today.month, date_today.day, date_today.year)
         except Exception as e:
             print("A thing broke: %s" % e)
             return message
@@ -127,12 +130,12 @@ With UserID %s
             page_data = json.loads(raw.content)
             affixes = page_data['title']
             message_content = '''
-                    **%s**  |  **%s**  |  **%s**  |  **%s**
+**%s**  |  **%s**  |  **%s**  |  **%s**
 
-                    **%s** - %s
-                    **%s** - %s
-                    **%s** - %s
-                    **%s** - %s Thundering Weak Aura: <https://wago.io/thundering-affix>
+**%s** - %s
+**%s** - %s
+**%s** - %s
+**%s** - %s Thundering Weak Aura: <https://wago.io/thundering-affix>
                     ''' % (page_data['affix_details'][0]['name'], page_data['affix_details'][1]['name'], page_data['affix_details'][2]['name'], page_data['affix_details'][3]['name'],
                         page_data['affix_details'][0]['name'], page_data['affix_details'][0]['description'],
                         page_data['affix_details'][1]['name'], page_data['affix_details'][1]['description'],
