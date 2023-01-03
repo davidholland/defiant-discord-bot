@@ -133,8 +133,11 @@ For the week of %s/%s/%s the M+ affixes are...''' % (date_today.month, date_toda
 **%s**  |  **%s**  |  **%s**  |  **%s**
 
 **%s** - %s
+
 **%s** - %s
+
 **%s** - %s
+
 **%s** - %s Thundering Weak Aura: <https://wago.io/thundering-affix>
                     ''' % (page_data['affix_details'][0]['name'], page_data['affix_details'][1]['name'], page_data['affix_details'][2]['name'], page_data['affix_details'][3]['name'],
                         page_data['affix_details'][0]['name'], page_data['affix_details'][0]['description'],
