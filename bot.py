@@ -113,12 +113,7 @@ With UserID %s
         try:
             date_today = datetime.datetime.now()
             message='''**Good Morning!**
-
-Happy Tuesday Defiant!
-
-__Details for the week of %s/%s/%s__
-
-The M+ affixes are...''' % (date_today.month, date_today.day, date_today.year)
+            Happy Tuesday Defiant.  For the week of %s/%s/%s the M+ affixes are...''' % (date_today.month, date_today.day, date_today.year)
         except Exception as e:
             print("A thing broke: %s" % e)
             return message
