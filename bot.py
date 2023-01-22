@@ -183,7 +183,7 @@ __Details for the week of %s/%s/%s__```
 
             elif tableName in ('timers'):
                 table = '''
-`Mythic + Timers`
+`Mythic+ Timers (Updated for 10.0.2)`
 
 - The timers for each M+
 ```json
