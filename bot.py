@@ -187,16 +187,16 @@ __Details for the week of %s/%s/%s__```
 
 - The timers for each M+
 ```json
-   Dungeon               |  +1   |  +2   |  +3
--------------------------------------------------
-   De Other Side         | 41:00 | 32:48 | 24:36
-   Halls of Atonement    | 34:00 | 27:12 | 20:24
-   Mists of Tirna Scithe | 30:00 | 24:00 | 18:00
-   Necrotic Wake         | 32:00 | 25:36 | 19:12
-   Plaguefall            | 38:00 | 30:24 | 22:48
-   Sanguine Depths       | 41:00 | 32:48 | 24:36
-   Spires of Ascension   | 36:00 | 28:48 | 21:36
-   Theater of Pain       | 40:00 | 32:00 | 24:00 ```
+   Dungeon                    |  +1   |  +2   |  +3
+------------------------------------------------------
+   Ruby Life Pools            | 30:00 | 24:00 | 18:00
+   The Nokhud Offensive       | 40:00 | 32:00 | 24:00
+   The Azure Vault            | 34:00 | 27:12 | 20:24
+   Algeth'ar Academy          | 32:00 | 25:36 | 19:12
+   Court of Stars             | 30:00 | 24:00 | 18:00
+   Halls of Valor             | 38:00 | 30:24 | 22:48
+   Shadowmoon Burial Grounds  | 33:00 | 26:24 | 23:24
+   Temple of the Jade Serpent | 30:00 | 24:00 | 18:00 ```
 '''
 
         except Exception as e:
