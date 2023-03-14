@@ -137,7 +137,7 @@ __Details for the week of %s/%s/%s__```
                     **%s** - %s
                     **%s** - %s
                     **%s** - %s
-                    **%s** - %s | Weak Aura to track: https://wago.io/thundering-affix
+                    **%s** - %s | Weak Aura to track: <https://wago.io/thundering-affix>
                     ''' % (page_data['affix_details'][0]['name'], page_data['affix_details'][1]['name'], page_data['affix_details'][2]['name'], page_data['affix_details'][3]['name'],
                         page_data['affix_details'][0]['name'], page_data['affix_details'][0]['description'],
                         page_data['affix_details'][1]['name'], page_data['affix_details'][1]['description'],
