@@ -151,50 +151,49 @@ __Details for the week of %s/%s/%s__```
         try:
             if tableName in ('chest', 'titan', 'mythic'):
                 table = '''
-`Mythic+ (Updated for 10.0.2)`
+`Mythic+ (Updated for 10.2)`
 - Gear you will get per keystone level, and in your Great Vault after Tuesday reset.
 ```apache
   Key | iLvL End  | iLvL Vault
 --------------------------------
-   1  |    372    |    ---
-   2  |    376    |    382
-   3  |    376    |    385
-   4  |    379    |    385
-   5  |    379    |    389
-   6  |    382    |    389
-   7  |    385    |    392
-   8  |    385    |    395
-   9  |    389    |    395
-   10 |    392    |    398
-   11 |    392    |    402
-   12 |    392    |    405
-   13 |    392    |    408
-   14 |    395    |    408
-   15 |    398    |    411
-   16 |    398    |    415
-   17 |    402    |    415
-   18 |    402    |    418
-   19 |    405    |    418
-   20 |    405    |    421
+   2  |    441    |    454
+   3  |    444    |    457
+   4  |    444    |    460
+   5  |    447    |    460
+   6  |    447    |    463
+   7  |    450    |    463
+   8  |    450    |    467
+   9  |    454    |    467
+   10 |    454    |    470
+   11 |    457    |    470
+   12 |    457    |    473
+   13 |    460    |    473
+   14 |    460    |    473
+   15 |    463    |    476
+   16 |    463    |    476
+   17 |    467    |    476
+   18 |    467    |    480
+   19 |    470    |    480
+   20 |    470    |    483
    ```
                 '''
 
             elif tableName in ('timers'):
                 table = '''
-`Mythic+ Timers (Updated for 10.0.2)`
+`Mythic+ Timers (Updated for 10.2)`
 
 - The timers for each M+
 ```json
    Dungeon                    |  +1   |  +2   |  +3
 ------------------------------------------------------
-   Ruby Life Pools            | 30:00 | 24:00 | 18:00
-   The Nokhud Offensive       | 40:00 | 32:00 | 24:00
-   The Azure Vault            | 34:00 | 27:12 | 20:24
-   Algeth'ar Academy          | 32:00 | 25:36 | 19:12
-   Court of Stars             | 30:00 | 24:00 | 18:00
-   Halls of Valor             | 38:00 | 30:24 | 22:48
-   Shadowmoon Burial Grounds  | 33:00 | 26:24 | 23:24
-   Temple of the Jade Serpent | 30:00 | 24:00 | 18:00 ```
+   DOTI: Galakrond's Fall     | 34:00 | 27:12 | 20:24
+   DOTI: Murazond's Rise      | 35:00 | 28:00 | 21:00
+   Atal'Dazar                 | 30:00 | 24:00 | 18:00
+   Waycrest Manor             | 36:40 | 29:20 | 22:00
+   Black Rook Hold            | 36:00 | 28:48 | 23:24
+   Darkheart Thicket          | 30:00 | 24:00 | 18:00
+   The Everbloom              | 33:00 | 26:24 | 19:48
+   Throne of the Tides        | 34:00 | 27:12 | 20:24 ```
 '''
 
         except Exception as e:
