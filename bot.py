@@ -210,7 +210,7 @@ __Details for the week of %s/%s/%s__```
 
 
         if message.content.lower().startswith('!help'):
-            command_list = ['!affixes','!vault', '!greatvault', '!chest', '!logs']
+            command_list = ['!chest', '!timers','!gear','!logs']
             command_list.sort()
             v = '''
 `Help Menu`
@@ -220,77 +220,10 @@ __Details for the week of %s/%s/%s__```
 
 ############# START USER SPECIFIC / FUN REACTIONS
 
-        elif message.content.lower().startswith('!whatday'):
-            d = { 1 : '''https://strats-forum-attachments.s3.amazonaws.com/original/2X/5/5c98f26aa5468db7870865429ea404ea32131f67.jpg''', 2 : '''https://i.imgur.com/x0qSq5H.png''', 3 : '''https://memegenerator.net/img/instances/56758076/did-someone-say-raid-night.jpg''', 4 : '''http://s.quickmeme.com/img/18/18c2f6010e5e9cd3c2b868785cfe6628788beff0f46f89c83b2c55cbae7c1502.jpg''' }
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
 
-        elif message.content.lower().startswith('!ball'):
-            d = { 1 : '''It wasn't me.''', 2 : '''Don't worry, this portal is safe. :D ''', 3 : 'https://media1.tenor.com/images/9cd51c012a19b1ed7501f7fee83e9617/tenor.gif', 4: '''https://media.tenor.com/images/077234833a766b534f348213f742eaf0/tenor.gif''' }
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
-
-        elif message.content.lower().startswith('!mcsta'):
-            d = { 1 : '..you can fall of this ledge guys.', 2 : 'Do. Not. Heal.', 3 : 'TEAM RAMROD!', 4: '''https://i.pinimg.com/originals/82/da/70/82da703541a8b54d123650e4829a5edb.jpg''' }
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
-
-        elif message.content.lower().startswith('!walm'):
-            d = { 1 : '1 Plz.', 2 : '''https://i.imgflip.com/2uvz1e.jpg''', 3 : 'Another 1 plz, lol I canceled that one.', 4 : '''https://i.imgflip.com/2uvzyi.jpg'''}
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
-
-        elif message.content.lower().startswith('!rez'):
-            d = { 1 : 'https://memegenerator.net/img/instances/81499260/heeeeeyyyyooooooo.jpg', 2 : 'Them bearwinders though.', 3 : 'https://memegenerator.net/img/instances/81499241/beeeooo-beeeooo-beeeooo-beeeooo-beeeooo-beeeooooooo.jpg', 4 : "Don't worry, it'll just be a quick plus-a-roo" }
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
-
-        elif message.content.lower().startswith('!shept'):
-            d = { 1 : 'Very punny guy!', 2 : 'The robot version is the best version.', 3 : 'Prot DPS spec!', 4 : 'Agreed. Everyone should roll paladins.' }
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
-
-        elif message.content.lower().startswith('!lon'):
-            d = { 1 : 'WHAT DAY IS IT!?!?', 2 : 'Lootsham? Looticus?', 3 : 'All your loot are belong to him.'}
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
-
-        elif message.content.lower().startswith('!scarab'):
-            d = { 1 : 'Sleepy Boy!', 2 : 'That dead shaman over there?', 3 : '''Top DPS? Dead? Asleep? Anyone's guess really.''' }
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
-
-        elif message.content.lower().startswith('!nia'):
-            d = { 1 : 'Watch. Your. Throat.' , 2: 'Too many chiefs!', 3: '''You're not the boss of me.'''}
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!teo'):
             d = { 1 : 'Whisper that guy' , 2: 'Nicest guy in the guild.', 3: '''It's probably Teo's fault.'''}
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
-
-        elif message.content.lower().startswith('!tareva'):
-            d = { 1 : '...  <-- a joke about being really quiet.' , 2: 'The actual guild leader.  Pulling strings behind the scenes.'}
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
-
-        elif message.content.lower().startswith('!shy'):
-            d = { 1 : '''Hey it's Mosh.... Shyrene!!''', 2 : '''Steal some of Lonsham's luck for us already''' }
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
-            
-        elif message.content.lower().startswith('!dadjoke'):
-            joke = dadjokes.Dadjoke()
-            await send_message(channel=message.channel, message=joke.joke, send_file=None)
-
-        elif message.content.lower().startswith('!darj'):
-            d = { 1 : '''He's got moon''', 2 : '''10 minute break?  Sweet.  Be back in 20.''' }
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
-
-        elif message.content.lower().startswith('!token'):
-            d = { 1 : '''https://memegenerator.net/img/instances/81499276/have-you-heard-of-this-thing-the-netherlight-crucible.jpg''', 2 : '''https://memegenerator.net/img/instances/81499311/inc-bud.jpg''' }
             k, v = random.choice(list(d.items()))
             await send_message(channel=message.channel, message=v, send_file=None)
 
@@ -303,17 +236,6 @@ __Details for the week of %s/%s/%s__```
 
         elif message.content.lower().startswith('!eodred') or message.content.lower().startswith('!xorr'):
             await send_message(channel=message.channel, message=None, send_file='eodred.png')
-
-        elif message.content.lower().startswith('!mag'):
-            await send_message(channel=message.channel, message=None, send_file='magnollia.png')
-
-        elif message.content.lower().startswith('!sour'):
-            d = { 1 : '''Hold on, hold on, hold on... wait... Reznik, what is the button called that I push to taunt?''', 2 : '''Cracklin' with lightning?  Friend huggin' time.''' }
-            k, v = random.choice(list(d.items()))
-            await send_message(channel=message.channel, message=v, send_file=None)
-
-        elif message.content.lower().startswith('!rath'):
-            await send_message(channel=message.channel, message=None, send_file='rathattack.png')
 
 ############# END USER SPECIFIC / FUN REACTIONS
 
@@ -371,8 +293,8 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
             table = get_table("timers")
             await send_message(channel=message.channel, message=table, send_file=None)
 
-        elif message.content.lower().startswith('!affix'):
-            await send_message(channel=message.channel, message=None, send_file='affixes.png')
+        elif message.content.lower().startswith('!gear'):
+            await send_message(channel=message.channel, message=None, send_file='loot_upgrade_track.png')
 
         elif message.content.lower().startswith('!logs'):
             d = { 1 : '''https://www.warcraftlogs.com/guild/us/doomhammer/defiant''' }
