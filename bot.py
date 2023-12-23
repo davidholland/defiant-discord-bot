@@ -289,6 +289,10 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
             table = get_table("chest")
             await send_message(channel=message.channel, message=table, send_file=None)
 
+        elif message.content.lower().startswith('!dadjoke'):
+            dadejoke = dadjokes.Dadjoke()
+            await send_message(channel=message.channel, message=dadjoke.joke, send_file=None)
+
         elif message.content.lower().startswith('!timer'):
             table = get_table("timers")
             await send_message(channel=message.channel, message=table, send_file=None)
