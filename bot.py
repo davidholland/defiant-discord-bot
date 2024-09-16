@@ -332,7 +332,7 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
                 await send_message(channel=message.channel, message=v, send_file=None)
                 close_discord()
             else:
-                v = "Nope! %s"
+                v = "Nope! %s not a valid admin." % (str(author))
                 await send_message(channel=message.channel, message=v, send_file=None)
 
         elif message.content.lower().startswith('!welcome'):
