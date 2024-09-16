@@ -168,9 +168,8 @@ __Details for the week of %s/%s/%s__```
    9  |  613  | Hero 2/6  |  619  | Hero 4/6
    10 |  613  | Hero 2/6  |  623  | Myth 1/6```
    
-   - Bountiful Delve Rewards at end of run and Great Vault
-   
-   ```apache
+- Bountiful Delve Rewards at end of run and Great Vault
+```apache
   Lvl |  End  |   Track   | Vault | Track
 -------------------------------------------
    1  |  561  | Expl 2/8  |  584  | Vet 1/8
