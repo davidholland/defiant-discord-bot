@@ -151,30 +151,37 @@ __Details for the week of %s/%s/%s__```
         try:
             if tableName in ('chest', 'titan', 'mythic'):
                 table = '''
-`Mythic+ (Updated for 10.2)`
-- Gear you will get per keystone level, and in your Great Vault after Tuesday reset.
+`Season 1 Gear (Updated for 11.0.2)`
+- Dungeon Loot Rewards At end of dungeon and Great Vault
 ```apache
-  Key | iLvL End  | iLvL Vault
---------------------------------
-   2  |    441    |    454
-   3  |    444    |    457
-   4  |    444    |    460
-   5  |    447    |    460
-   6  |    447    |    463
-   7  |    450    |    463
-   8  |    450    |    467
-   9  |    454    |    467
-   10 |    454    |    470
-   11 |    457    |    470
-   12 |    457    |    473
-   13 |    460    |    473
-   14 |    460    |    473
-   15 |    463    |    476
-   16 |    463    |    476
-   17 |    467    |    476
-   18 |    467    |    480
-   19 |    470    |    480
-   20 |    470    |    483
+  Key |  End  |   Track   | Vault | Track
+-------------------------------------------
+ Hero |  580  | Adven 4/8 |  593  | Vet 4/8
+   0  |  597  | Champ 1/8 |  603  | Champ 3/8
+   2  |  597  | Champ 1/8 |  606  | Champ 4/8
+   3  |  597  | Champ 1/8 |  610  | Hero 1/6
+   4  |  600  | Champ 2/8 |  610  | Hero 1/6
+   5  |  603  | Champ 3/8 |  613  | Hero 2/6
+   6  |  606  | Champ 4/8 |  613  | Hero 2/6
+   7  |  610  | Hero 1/6  |  616  | Hero 3/6
+   8  |  610  | Hero 1/6  |  619  | Hero 4/6
+   9  |  613  | Hero 2/6  |  619  | Hero 4/6
+   10 |  613  | Hero 2/6  |  623  | Myth 1/6
+
+   ```
+   - Bountiful Delve Rewards at end of run and Great Vault
+   ```apache
+  Lvl |  End  |   Track   | Vault | Track
+-------------------------------------------
+   1  |  561  | Expl 2/8  |  584  | Vet 1/8
+   2  |  564  | Expl 3/8  |  584  | Vet 1/8
+   3  |  571  | Adven 1/8 |  587  | Vet 2/8
+   4  |  577  | Adven 3/8 |  597  | Champ 1/8
+   5  |  584  | Vet 1/8   |  603  | Champ 3/8
+   6  |  590  | Vet 3/6   |  606  | Champ 4/8
+   7  |  597  | Champ 1/8 |  610  | Hero 1/6
+   8+ |  603  | Champ 3/8 |  616  | Hero 3/6
+
    ```
                 '''
 
