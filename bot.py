@@ -185,20 +185,20 @@ __Details for the week of %s/%s/%s__```
 
             elif tableName in ('timers'):
                 table = '''
-`Mythic+ Timers (Updated for 10.2)`
+`Mythic+ Timers (Updated for 11.0.2)`
 
 - The timers for each M+
 ```json
    Dungeon                    |  +1   |  +2   |  +3
 ------------------------------------------------------
-   DOTI: Galakrond's Fall     | 34:00 | 27:12 | 20:24
-   DOTI: Murazond's Rise      | 35:00 | 28:00 | 21:00
-   Atal'Dazar                 | 30:00 | 24:00 | 18:00
-   Waycrest Manor             | 36:40 | 29:20 | 22:00
-   Black Rook Hold            | 36:00 | 28:48 | 23:24
-   Darkheart Thicket          | 30:00 | 24:00 | 18:00
-   The Everbloom              | 33:00 | 26:24 | 19:48
-   Throne of the Tides        | 34:00 | 27:12 | 20:24 ```
+   The Stonevault             | 33:00 | 24:26 | 19:48
+   The Dawnbreaker            | 30:00 | 24:00 | 18:00
+   City of Threads            | 35:00 | 29:00 | 21:00
+   Ara-Kara, City of Echoes   | 30:40 | 24:00 | 18:00
+   Mists of Tirna Scithe      | 30:00 | 24:00 | 18:00
+   The Necrotic Wake          | 32:00 | 25:36 | 19:12
+   Siege of Boralus           | 34:00 | 27:12 | 20:20
+   Grim Batol                 | 36:00 | 29:12 | 21:36```
 '''
 
         except Exception as e:
@@ -290,10 +290,10 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
 
 ############# START SYSTEM REACTIONS
 
-        elif message.content.lower().startswith('!chest') or message.content.lower().startswith('!titan') or message.content.lower().startswith('!resid') or message.content.lower().startswith('!mythic'):
+        elif message.content.lower().startswith('!chest') or message.content.lower().startswith('!vault') or message.content.lower().startswith('!gear') or message.content.lower().startswith('!mythic'):
             table = get_table("chest")
             await send_message(channel=message.channel, message=table, send_file=None)
-
+            
         elif message.content.lower().startswith('!dadjoke'):
             dadjoke = dadjokes.Dadjoke()
             await send_message(channel=message.channel, message=dadjoke.joke, send_file=None)
@@ -301,9 +301,6 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
         elif message.content.lower().startswith('!timer'):
             table = get_table("timers")
             await send_message(channel=message.channel, message=table, send_file=None)
-
-        elif message.content.lower().startswith('!gear'):
-            await send_message(channel=message.channel, message=None, send_file='loot_upgrade_track.png')
 
         elif message.content.lower().startswith('!logs'):
             d = { 1 : '''https://www.warcraftlogs.com/guild/us/doomhammer/defiant''' }
@@ -327,9 +324,6 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
             mval_channel=discord.Object(id=int(mvals[1]))
             mval_message=mvals[2]
             await send_message(channel=mval_channel, message=mval_message, send_file=None)
-
-        elif message.content.lower().startswith('!vault') or message.content.lower().startswith('!greatvault') or message.content.lower().startswith('!gv'):
-            await send_message(channel=message.channel, message=None, send_file='gv.png')
 
         elif message.content.lower().startswith('!restart'):
             author = message.author
