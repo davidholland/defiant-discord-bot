@@ -166,10 +166,10 @@ __Details for the week of %s/%s/%s__```
    7  |  610  | Hero 1/6  |  616  | Hero 3/6
    8  |  610  | Hero 1/6  |  619  | Hero 4/6
    9  |  613  | Hero 2/6  |  619  | Hero 4/6
-   10 |  613  | Hero 2/6  |  623  | Myth 1/6
-
-   ```
+   10 |  613  | Hero 2/6  |  623  | Myth 1/6```
+   
    - Bountiful Delve Rewards at end of run and Great Vault
+
    ```apache
   Lvl |  End  |   Track   | Vault | Track
 -------------------------------------------
@@ -180,9 +180,8 @@ __Details for the week of %s/%s/%s__```
    5  |  584  | Vet 1/8   |  603  | Champ 3/8
    6  |  590  | Vet 3/6   |  606  | Champ 4/8
    7  |  597  | Champ 1/8 |  610  | Hero 1/6
-   8+ |  603  | Champ 3/8 |  616  | Hero 3/6
-
-   ```
+   8+ |  603  | Champ 3/8 |  616  | Hero 3/6```
+               
                 '''
 
             elif tableName in ('timers'):
