@@ -138,7 +138,7 @@ __Details for the week of %s/%s/%s__```
                     +4  - **%s** - %s
                     +7  - **%s** - %s
                     +10 - **%s** - %s
-                    +12 - **Xal'atath's Guile** - All benefits from Xal'atath's Bargains are removed. All enemies have a flat 20% increase to their HP and damage
+                    +12 - **Xal'atath's Guile** - All benefits from Xal'atath's Bargains are removed. All enemies have a flat 20 percent increase to their HP and damage.
                     ''' % (page_data['affix_details'][0]['name'], page_data['affix_details'][1]['name'], page_data['affix_details'][2]['name'],page_data['affix_details'][3]['name'],
                         page_data['affix_details'][0]['name'], page_data['affix_details'][0]['description'],
                         page_data['affix_details'][1]['name'], page_data['affix_details'][1]['description'],
