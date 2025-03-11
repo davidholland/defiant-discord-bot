@@ -175,8 +175,8 @@ __Details for the week of %s/%s/%s__```
 ```apache
   Lvl |  End  |   Track   | Vault | Track
 -------------------------------------------
-   1  |  610  | Adven 1/8  |  623  | Vet 1/8
-   2  |  613  | Adven 2/8  |  626  | Vet 2/8
+   1  |  610  | Adven 1/8 |  623  | Vet 1/8
+   2  |  613  | Adven 2/8 |  626  | Vet 2/8
    3  |  616  | Adven 3/8 |  629  | Vet 3/8
    4  |  619  | Adven 4/8 |  632  | Vet 4/8
    5  |  623  | Vet 1/8   |  639  | Champ 2/8
