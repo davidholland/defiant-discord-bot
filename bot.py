@@ -154,7 +154,7 @@ __Details for the week of %s/%s/%s__```
         try:
             if tableName in ('chest', 'titan', 'mythic'):
                 table = '''
-`Season 1 Gear (Updated for 11.0.2)`
+`Season 2 Gear (Updated for 11.0.7)`
 - Dungeon Loot Rewards At end of dungeon and Great Vault
 ```apache
   Key |  End  |   Track   | Vault | Track
