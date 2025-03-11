@@ -159,30 +159,30 @@ __Details for the week of %s/%s/%s__```
 ```apache
   Key |  End  |   Track   | Vault | Track
 -------------------------------------------
- Hero |  580  | Adven 4/8 |  593  | Vet 4/8
-   0  |  597  | Champ 1/8 |  603  | Champ 3/8
-   2  |  597  | Champ 1/8 |  606  | Champ 4/8
-   3  |  597  | Champ 1/8 |  610  | Hero 1/6
-   4  |  600  | Champ 2/8 |  610  | Hero 1/6
-   5  |  603  | Champ 3/8 |  613  | Hero 2/6
-   6  |  606  | Champ 4/8 |  613  | Hero 2/6
-   7  |  610  | Hero 1/6  |  616  | Hero 3/6
-   8  |  610  | Hero 1/6  |  619  | Hero 4/6
-   9  |  613  | Hero 2/6  |  619  | Hero 4/6
-   10 |  613  | Hero 2/6  |  623  | Myth 1/6```
+ Hero |  593  | Adven 4/8 |  632  | Vet 4/8
+   0  |  636  | Champ 1/8 |  645  | Champ 4/8
+   2  |  639  | Champ 2/8 |  649  | Hero 1/8
+   3  |  639  | Champ 2/8 |  649  | Hero 1/6
+   4  |  642  | Champ 3/8 |  652  | Hero 2/6
+   5  |  645  | Champ 4/8 |  652  | Hero 2/6
+   6  |  649  | Hero 1/8  |  655  | Hero 3/6
+   7  |  649  | Hero 1/6  |  658  | Hero 4/6
+   8  |  652  | Hero 2/6  |  658  | Hero 4/6
+   9  |  652  | Hero 2/6  |  658  | Hero 4/6
+   10 |  655  | Hero 3/6  |  662  | Myth 1/6```
    
 - Bountiful Delve Rewards at end of run and Great Vault
 ```apache
   Lvl |  End  |   Track   | Vault | Track
 -------------------------------------------
-   1  |  561  | Expl 2/8  |  584  | Vet 1/8
-   2  |  564  | Expl 3/8  |  584  | Vet 1/8
-   3  |  571  | Adven 1/8 |  587  | Vet 2/8
-   4  |  577  | Adven 3/8 |  597  | Champ 1/8
-   5  |  584  | Vet 1/8   |  603  | Champ 3/8
-   6  |  590  | Vet 3/6   |  606  | Champ 4/8
-   7  |  597  | Champ 1/8 |  610  | Hero 1/6
-   8+ |  603  | Champ 3/8 |  616  | Hero 3/6```
+   1  |  610  | Adven 1/8  |  623  | Vet 1/8
+   2  |  613  | Adven 2/8  |  626  | Vet 2/8
+   3  |  616  | Adven 3/8 |  629  | Vet 3/8
+   4  |  619  | Adven 4/8 |  632  | Vet 4/8
+   5  |  623  | Vet 1/8   |  639  | Champ 2/8
+   6  |  626  | Vet 2/6   |  642  | Champ 3/8
+   7  |  636  | Champ 1/8 |  649  | Champ 4/6
+   8+ |  639  | Champ 2/8 |  649  | Hero 1/6```
                
                 '''
 
