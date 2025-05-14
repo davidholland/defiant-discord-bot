@@ -152,24 +152,26 @@ __Details for the week of %s/%s/%s__```
     def get_table(tableName):
         table = ''
         try:
-            if tableName in ('chest', 'titan', 'mythic'):
+            if tableName in ('chest', 'titan', 'mythic', 'crest'):
                 table = '''
 `Season 2 Gear (Updated for 11.0.7)`
 - Dungeon Loot Rewards At end of dungeon and Great Vault
 ```apache
-  Key |  End  |   Track   | Vault | Track
--------------------------------------------
- Hero |  593  | Adven 4/8 |  632  | Vet 4/8
-   0  |  636  | Champ 1/8 |  645  | Champ 4/8
-   2  |  639  | Champ 2/8 |  649  | Hero 1/8
-   3  |  639  | Champ 2/8 |  649  | Hero 1/6
-   4  |  642  | Champ 3/8 |  652  | Hero 2/6
-   5  |  645  | Champ 4/8 |  652  | Hero 2/6
-   6  |  649  | Hero 1/8  |  655  | Hero 3/6
-   7  |  649  | Hero 1/6  |  658  | Hero 4/6
-   8  |  652  | Hero 2/6  |  658  | Hero 4/6
-   9  |  652  | Hero 2/6  |  658  | Hero 4/6
-   10 |  655  | Hero 3/6  |  662  | Myth 1/6```
+  Key |  Crests   |  End  |   Track   | Vault | Track
+--------------------------------------------------------
+ Hero |   None    |  593  | Adven 4/8 |  632  | Vet 4/8
+   0  |   None    |  636  | Champ 1/8 |  645  | Champ 4/8
+   2  | 10 Runed  |  639  | Champ 2/8 |  649  | Hero 1/8
+   3  | 12 Runed  |  639  | Champ 2/8 |  649  | Hero 1/6
+   4  | 14 Runed  |  642  | Champ 3/8 |  652  | Hero 2/6
+   5  | 16 Runed  |  645  | Champ 4/8 |  652  | Hero 2/6
+   6  | 18 Runed  |  649  | Hero 1/8  |  655  | Hero 3/6
+   7  | 10 Gilded |  649  | Hero 1/6  |  658  | Hero 4/6
+   8  | 12 Gilded |  652  | Hero 2/6  |  658  | Hero 4/6
+   9  | 14 Gilded |  652  | Hero 2/6  |  658  | Hero 4/6
+   10 | 16 Gilded |  655  | Hero 3/6  |  662  | Myth 1/6
+   11 | 18 Gilded |  655  | Hero 3/6  |  662  | Myth 1/6
+   12+| 20 Gilded |  655  | Hero 3/6  |  662  | Myth 1/6```
    
 - Bountiful Delve Rewards at end of run and Great Vault
 ```apache
@@ -293,7 +295,7 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
 
 ############# START SYSTEM REACTIONS
 
-        elif message.content.lower().startswith('!chest') or message.content.lower().startswith('!vault') or message.content.lower().startswith('!gear') or message.content.lower().startswith('!mythic'):
+        elif message.content.lower().startswith('!chest') or message.content.lower().startswith('!crest') or message.content.lower().startswith('!vault') or message.content.lower().startswith('!gear') or message.content.lower().startswith('!mythic'):
             table = get_table("chest")
             await send_message(channel=message.channel, message=table, send_file=None)
             
