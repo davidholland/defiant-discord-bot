@@ -154,7 +154,7 @@ __Details for the week of %s/%s/%s__```
         try:
             if tableName in ('chest', 'titan', 'mythic', 'crest'):
                 table = '''
-`Season 2 Gear (Updated for 11.0.7)`
+`Season 3 Gear (Updated for 11.2)`
 - Dungeon Loot Rewards At end of dungeon and Great Vault
 ```apache
   Key |  Crests   |  End  |   Track   | Vault | Track
@@ -188,20 +188,22 @@ __Details for the week of %s/%s/%s__```
 
             elif tableName in ('timers'):
                 table = '''
-`Mythic+ Timers Season 2 (Updated for 11.0.7)`
+`Mythic+ Timers Season 3 (Updated for 11.2)`
 
 - The timers for each M+
 ```json
    Dungeon                    |  +1   |  +2   |  +3
 ------------------------------------------------------
-   Cinderbrew Meadery         | 33:00 | 26:24 | 19:48
-   Darkflame Cleft            | 33:00 | 26:24 | 19:48
-   The Rookery                | 29:00 | 23:24 | 17:48
-   Priory of the Sacred Flame | 31:00 | 24:28 | 18:48
-   Operation: Floodgate       | 33:00 | 26:24 | 19:48
-   The MOTHERLODE!!           | 39:00 | 31:12 | 23:24
-   Theater of Pain            | 34:00 | 27:12 | 20:24
-   Mechagon - Workshop        | 32:00 | 25:36 | 19:12```
+   Eco-Dome Al'dani            | 31:00 | 24:48 | 18:36
+   Ara-Kara, City of Echoes    | 30:00 | 24:00 | 18:00
+   The Dawnbreaker             | 31:00 | 24:48 | 18:36
+   Priory of the Sacred Flame  | 32:30 | 26:00 | 19:30
+   Operation: Floodgate        | 33:00 | 26:24 | 19:48
+   Halls of Atonement          | 31:00 | 24:28 | 18:36
+   Tazavesh: Streets of Wonder | 39:00 | 31:12 | 23:24
+   Tazavesh: So'leah's Gambit  | 30:00 | 24:00 | 18:00
+   
+   ```
 '''
 
         except Exception as e:
