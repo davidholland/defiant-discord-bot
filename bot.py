@@ -192,7 +192,7 @@ __Details for the week of %s/%s/%s__```
 
 - The timers for each M+
 ```json
-   Dungeon                    |  +1   |  +2   |  +3
+   Dungeon                     |  +1   |  +2   |  +3
 ------------------------------------------------------
    Eco-Dome Al'dani            | 31:00 | 24:48 | 18:36
    Ara-Kara, City of Echoes    | 30:00 | 24:00 | 18:00
