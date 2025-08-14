@@ -293,6 +293,9 @@ lfg - Adds you to the wow-lfg channel if you are interested in notifications whe
 
 ############# START SYSTEM REACTIONS
 
+        elif message.content.lower().startswith('!gearguide'):
+            await send_message(channel=message.channel, message=None, send_file='gearing.png')
+        
         elif message.content.lower().startswith('!chest') or message.content.lower().startswith('!crest') or message.content.lower().startswith('!vault') or message.content.lower().startswith('!gear') or message.content.lower().startswith('!mythic'):
             table = get_table("chest")
             await send_message(channel=message.channel, message=table, send_file=None)
