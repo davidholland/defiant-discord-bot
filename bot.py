@@ -201,9 +201,7 @@ __Details for the week of %s/%s/%s__```
    Operation: Floodgate        | 33:00 | 26:24 | 19:48
    Halls of Atonement          | 31:00 | 24:28 | 18:36
    Tazavesh: Streets of Wonder | 39:00 | 31:12 | 23:24
-   Tazavesh: So'leah's Gambit  | 30:00 | 24:00 | 18:00
-   
-   ```
+   Tazavesh: So'leah's Gambit  | 30:00 | 24:00 | 18:00```
 '''
 
         except Exception as e:
