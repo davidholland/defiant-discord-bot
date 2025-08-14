@@ -159,32 +159,30 @@ __Details for the week of %s/%s/%s__```
 ```apache
   Key |  Crests   |  End  |   Track   | Vault | Track
 --------------------------------------------------------
- Hero |   None    |  593  | Adven 4/8 |  632  | Vet 4/8
-   0  |   None    |  636  | Champ 1/8 |  645  | Champ 4/8
-   2  | 10 Runed  |  639  | Champ 2/8 |  649  | Hero 1/8
-   3  | 12 Runed  |  639  | Champ 2/8 |  649  | Hero 1/6
-   4  | 14 Runed  |  642  | Champ 3/8 |  652  | Hero 2/6
-   5  | 16 Runed  |  645  | Champ 4/8 |  652  | Hero 2/6
-   6  | 18 Runed  |  649  | Hero 1/8  |  655  | Hero 3/6
-   7  | 10 Gilded |  649  | Hero 1/6  |  658  | Hero 4/6
-   8  | 12 Gilded |  652  | Hero 2/6  |  658  | Hero 4/6
-   9  | 14 Gilded |  652  | Hero 2/6  |  658  | Hero 4/6
-   10 | 16 Gilded |  655  | Hero 3/6  |  662  | Myth 1/6
-   11 | 18 Gilded |  655  | Hero 3/6  |  662  | Myth 1/6
-   12+| 20 Gilded |  655  | Hero 3/6  |  662  | Myth 1/6```
+   2  | 10 Runed  |  684  | Champ 2/8 |  694  | Hero 1/8
+   3  | 12 Runed  |  684  | Champ 2/8 |  694  | Hero 1/6
+   4  | 14 Runed  |  688  | Champ 3/8 |  697  | Hero 2/6
+   5  | 16 Runed  |  691  | Champ 4/8 |  697  | Hero 2/6
+   6  | 18 Runed  |  694  | Hero 1/8  |  701  | Hero 3/6
+   7  | 10 Gilded |  694  | Hero 1/6  |  704  | Hero 4/6
+   8  | 12 Gilded |  697  | Hero 2/6  |  704  | Hero 4/6
+   9  | 14 Gilded |  697  | Hero 2/6  |  704  | Hero 4/6
+   10 | 16 Gilded |  701  | Hero 3/6  |  707  | Myth 1/6
+   11 | 18 Gilded |  701  | Hero 3/6  |  707  | Myth 1/6
+   12+| 20 Gilded |  701  | Hero 3/6  |  707  | Myth 1/6```
    
 - Bountiful Delve Rewards at end of run and Great Vault
 ```apache
   Lvl |  End  |   Track   | Vault | Track
 -------------------------------------------
-   1  |  610  | Adven 1/8 |  623  | Vet 1/8
-   2  |  613  | Adven 2/8 |  626  | Vet 2/8
-   3  |  616  | Adven 3/8 |  629  | Vet 3/8
-   4  |  619  | Adven 4/8 |  632  | Vet 4/8
-   5  |  623  | Vet 1/8   |  639  | Champ 2/8
-   6  |  626  | Vet 2/6   |  642  | Champ 3/8
-   7  |  636  | Champ 1/8 |  649  | Champ 4/6
-   8+ |  639  | Champ 2/8 |  649  | Hero 1/6```
+   1  |  655  | Adven 1/8 |  655  | Vet 1/8
+   2  |  658  | Adven 2/8 |  668  | Vet 2/8
+   3  |  662  | Adven 3/8 |  671  | Vet 3/8
+   4  |  665  | Adven 4/8 |  681  | Vet 4/8
+   5  |  668  | Vet 1/8   |  688  | Champ 2/8
+   6  |  671  | Vet 2/6   |  691  | Champ 3/8
+   7  |  681  | Champ 1/8 |  691  | Champ 4/6
+   8+ |  684  | Champ 2/8 |  694  | Hero 1/6```
                
                 '''
 
